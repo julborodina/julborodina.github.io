@@ -98,16 +98,21 @@ p,li{text-wrap:pretty}
 .boop{position:absolute;left:59.6%;top:55%;width:22%;aspect-ratio:1/1;transform:translate(-50%,-50%);border:0;border-radius:999px;background:transparent;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}
 .boop:active{transform:translate(-50%,-50%) scale(.9)}
 .tongue-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.mouth{opacity:0;animation:mouth 1.15s ease both}
-@keyframes mouth{0%,100%{opacity:0}15%,80%{opacity:.85}}
-.tongue{transform-box:view-box;transform-origin:741px 774px;animation:lick 1.15s cubic-bezier(.45,.05,.35,1) both}
+.mouth{opacity:0;animation:mouth .72s ease both}
+@keyframes mouth{0%,100%{opacity:0}10%,85%{opacity:.85}}
+.tongue{transform-box:view-box;transform-origin:741px 774px;animation:lick .72s linear both}
 @keyframes lick{
-0%{transform:scale(.9,.05) rotate(0deg);opacity:0}
-12%{opacity:1}
-32%{transform:scale(1,1) rotate(-14deg)}
-55%{transform:scale(1,1.04) rotate(12deg)}
-72%{transform:scale(1,.85) rotate(4deg)}
-100%{transform:scale(.9,.05) rotate(0deg);opacity:1}
+0%{transform:translateY(0) scale(.85,.04) rotate(0deg);opacity:0;animation-timing-function:cubic-bezier(.3,0,.2,1)}
+6%{opacity:1}
+16%{transform:translateY(-4px) scale(.95,.75) rotate(-8deg);animation-timing-function:cubic-bezier(.3,0,.4,1)}
+26%{transform:translateY(-8px) scale(1,1.06) rotate(-17deg);animation-timing-function:ease-in-out}
+36%{transform:translateY(-12px) scale(1.06,1.12) rotate(-9deg)}
+46%{transform:translateY(-13px) scale(1.07,1.14) rotate(1deg)}
+56%{transform:translateY(-11px) scale(1.04,1.1) rotate(11deg);animation-timing-function:ease-in-out}
+66%{transform:translateY(-7px) scale(1,1.02) rotate(17deg);animation-timing-function:cubic-bezier(.5,0,.8,.6)}
+78%{transform:translateY(-2px) scale(.96,.62) rotate(9deg)}
+90%{transform:translateY(0) scale(.9,.22) rotate(3deg)}
+100%{transform:translateY(0) scale(.85,.04) rotate(0deg);opacity:1}
 }
 </style>
 </helmet>
@@ -364,7 +369,7 @@ class Component extends DCLogic {
         if (self.state.licking) return;
         try { window.localStorage.setItem('jb-boop', '1'); } catch (e) {}
         self.setState({ licking: true, booped: true });
-        clearTimeout(self._lT); self._lT = setTimeout(function () { self.setState({ licking: false }); }, 1200);
+        clearTimeout(self._lT); self._lT = setTimeout(function () { self.setState({ licking: false }); }, 760);
       },
       setRu: function () { try { window.localStorage.setItem('jb-lang', 'ru'); } catch (e) {} self.setState({ lang: 'ru' }); },
       setEn: function () { try { window.localStorage.setItem('jb-lang', 'en'); } catch (e) {} self.setState({ lang: 'en' }); }
