@@ -46,7 +46,7 @@ p,li{text-wrap:pretty}
 .stack{gap:96px!important}
 .sec{gap:24px!important}
 .hero{padding-top:32px!important;gap:16px!important}
-.photo{width:112px!important;height:112px!important;border-radius:24px!important}
+.photo{width:160px!important;height:160px!important;border-radius:32px!important}
 .g2,.g3{grid-template-columns:minmax(0,1fr)!important}
 .span2{grid-column:auto!important}
 .row{grid-template-columns:minmax(0,1fr)!important;gap:4px!important}
@@ -93,6 +93,9 @@ p,li{text-wrap:pretty}
 }
 }
 @media (prefers-reduced-motion:reduce){.case,.ctile,.ctile-p,.btn-p,.btn-s,.shot{transition:none!important}.shot:hover,.case:hover{transform:none}}
+.heroB .photo{width:176px;height:176px}
+.heroB .note-d{left:100%!important;bottom:62%!important;transform:rotate(-8deg)!important;margin-left:2px;text-align:left!important;font-size:0.5em!important}
+@media (max-width:760px){.heroB{padding-top:28px!important}.heroB .note-m{display:block!important;left:50%!important;top:100%!important;bottom:auto!important;margin-top:12px;transform:translateX(-50%) rotate(-4deg)!important;font-size:0.55em!important}.heroB h1{margin-bottom:34px!important}.heroB .heroSub{font-size:20px!important}}
 </style>
 </helmet>
 <div id="top" lang="{{lang}}" style="background: #ffffff; color: #111111; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; text-transform: lowercase; letter-spacing: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: clip">
@@ -132,15 +135,16 @@ p,li{text-wrap:pretty}
 </div>
 </sc-if>
 
-<main style="width: 100%; box-sizing: border-box; padding: 0 clamp(16px, 9.4vw, 136px) 40px; display: flex; flex-direction: column; align-items: center">
+<main style="width: 100%; box-sizing: border-box; padding: 0 clamp(16px, 9.4vw, 136px) 40px; display: flex; flex-direction: column; align-items: center; position: relative">
 <div class="stack" style="width: 100%; max-width: 1168px; display: flex; flex-direction: column; gap: 160px">
 
-<section class="hero" aria-labelledby="hero-title" style="padding-top: 48px; display: flex; flex-direction: column; gap: 20px">
+<section class="hero heroB" aria-labelledby="hero-title" style="padding-top: 56px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px">
 <div class="photo" style="width: 200px; height: 200px; border-radius: 32px; background: #efefef; overflow: hidden; perspective: 600px"><img src="img/d10873ab43d2a4d04b88dde0af9bd5ff.webp" alt="{{t.photoAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover"></div>
-<div style="position: relative; max-width: 1168px; padding-top: 24px">
-<h1 id="hero-title" style="margin: 0; font-size: clamp(38px, 4.6vw, 66px); line-height: 1.08; font-weight: 500; letter-spacing: -0.02em; text-wrap: wrap; position: relative; color: #2C2F36"><span>{{t.h1a}} </span><span style="white-space: nowrap">{{t.h1pre}}&nbsp;<span style="position: relative; display: inline-block"><span class="note note-d" aria-hidden="true" style="position: absolute; left: 50%; bottom: 92%; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center">{{t.note}}</span><svg aria-hidden="true" viewBox="0 0 300 30" preserveAspectRatio="none" style="position: absolute; left: -4px; bottom: -0.12em; width: calc(100% + 8px); height: 0.3em"><path d="M4 18 C 60 8, 120 26, 180 14 S 270 10, 296 16" fill="none" stroke="#2779FF" stroke-width="5" stroke-linecap="round"></path></svg><span style="position: relative">{{t.h1mark}}</span></span></span><span style="color: #8a909c">{{t.h1b}}</span><span class="note note-m" aria-hidden="true" style="position: absolute; left: 233px; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center; bottom: calc(100% - 109px)">{{t.note}}</span></h1>
+<div style="position: relative; max-width: 1168px; padding-top: 28px">
+<h1 id="hero-title" style="margin: 0; font-size: clamp(42px, 6vw, 84px); line-height: 1.08; font-weight: 500; letter-spacing: -0.02em; text-wrap: wrap; position: relative; color: #2C2F36"><span>{{t.h1a}} </span><span style="white-space: nowrap">{{t.h1pre}}&nbsp;<span style="position: relative; display: inline-block"><svg aria-hidden="true" viewBox="0 0 300 30" preserveAspectRatio="none" style="position: absolute; left: -4px; bottom: -0.12em; width: calc(100% + 8px); height: 0.3em"><path d="M4 18 C 60 8, 120 26, 180 14 S 270 10, 296 16" fill="none" stroke="#2779FF" stroke-width="5" stroke-linecap="round"></path></svg><span style="position: relative">{{t.h1mark}}</span></span></span><span class="note note-m" aria-hidden="true" style="position: absolute; left: 233px; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center; bottom: calc(100% - 109px)">{{t.note}}</span></h1>
 </div>
-<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px">
+<p class="heroSub" style="margin: 0; max-width: 760px; font-size: clamp(22px, 2.3vw, 32px); line-height: 1.25; font-weight: 500; letter-spacing: -0.015em; color: #8a909c; text-wrap: balance">{{t.h1sub}}</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 16px">
 <a class="btn-p" href="https://t.me/jul_borodina" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border-radius: 30px; font-size: 17px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" style="flex: none"><path d="M2.6 11.3 20.3 4.4c.8-.3 1.7.4 1.5 1.3l-3 14.1c-.2.9-1.2 1.3-1.9.8l-4.7-3.4-2.4 2.3c-.4.4-1.1.2-1.2-.4l-.9-4.4-4.6-1.5c-.9-.3-.9-1.6 0-1.9Z" fill="currentColor"></path><path d="M9.4 14.2 16.6 8.3" fill="none" stroke="#2779FF" stroke-width="1.6" stroke-linecap="round"></path></svg>{{t.tg}}</a>
 <a class="btn-s" href="#cv-file" style="display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 28px; border-radius: 30px; font-size: 17px; font-weight: 500; text-decoration: none">{{t.cv}}<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v13M6 11l6 6 6-6M5 20h14"></path></svg></a>
 </div>
@@ -219,7 +223,7 @@ p,li{text-wrap:pretty}
 </section>
 
 </div>
-</main>
+<span class="note note-d" aria-hidden="true" style="position: absolute; left: 1119px; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center; top: 269px">{{t.note}}</span></main>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"startLang":{"editor":"enum","options":["ru","en"],"default":"ru"},"$preview":{"width":1440,"height":4690}}'>
@@ -293,6 +297,7 @@ class Component extends DCLogic {
     var src = dict[lang];
     var t = {};
     for (var k in src) { t[k] = nb(src[k]); }
+    t.h1sub = t.h1b.trim(); t.h1mark = t.h1mark.replace(/,$/, '');
     var cases = [
       { title: t.c1t, desc: t.c1d, aria: t.open + ' Ozon Premium', tt: 'none', img: 'img/0433fd9120a309b9f9f41742590faf34.jpg', imgM: 'img/ad9ea344f20582d0a3250f93f4e87174.jpg', href: 'ozon' + '.html' },
       { title: t.c2t, desc: t.c2d, aria: t.open + ' ' + t.c2t, tt: 'none', img: 'img/e0017eb83d0e056dbc7922666143fd58.jpg', imgM: 'img/cdadfd290f7ae372ce756eb53f372e42.jpg', href: 'spasibo-partners' + '.html' },
