@@ -97,9 +97,18 @@ p,li{text-wrap:pretty}
 @media (max-width:760px){.heroB{padding-top:28px!important}.heroB .note-x{font-size:0.42em!important;margin-left:0.12em!important}.heroB .heroSub{font-size:20px!important}}
 .boop{position:absolute;left:59.6%;top:55%;width:22%;aspect-ratio:1/1;transform:translate(-50%,-50%);border:0;border-radius:999px;background:transparent;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}
 .boop:active{transform:translate(-50%,-50%) scale(.9)}
-.hearts{position:absolute;left:52%;top:16%;width:0;height:0;pointer-events:none;z-index:3}
-.heart{position:absolute;left:0;top:0;transform:translate(-50%,-50%);opacity:0;animation:heartUp 1.5s cubic-bezier(.22,.61,.36,1) both}
-@keyframes heartUp{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}15%{opacity:1;transform:translate(calc(-50% + var(--dx) * .2),calc(-50% - 16px)) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% - 150px)) scale(var(--s))}}
+.tongue-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.mouth{opacity:0;animation:mouth 1.15s ease both}
+@keyframes mouth{0%,100%{opacity:0}15%,80%{opacity:.85}}
+.tongue{transform-box:view-box;transform-origin:741px 774px;animation:lick 1.15s cubic-bezier(.45,.05,.35,1) both}
+@keyframes lick{
+0%{transform:scale(.9,.05) rotate(0deg);opacity:0}
+12%{opacity:1}
+32%{transform:scale(1,1) rotate(-14deg)}
+55%{transform:scale(1,1.04) rotate(12deg)}
+72%{transform:scale(1,.85) rotate(4deg)}
+100%{transform:scale(.9,.05) rotate(0deg);opacity:1}
+}
 </style>
 </helmet>
 <div id="top" lang="{{lang}}" style="background: #ffffff; color: #111111; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; text-transform: lowercase; letter-spacing: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: clip">
@@ -217,7 +226,21 @@ p,li{text-wrap:pretty}
 <span style="font-size: 15px; font-weight: 500; color: #6b717d">{{t.more}}</span>
 <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 500">{{t.cvShort}}<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v13M6 11l6 6 6-6M5 20h14"></path></svg></span>
 </a>
-<div class="dog" style="grid-column: 3; grid-row: 1 / 3; position: relative"><div style="aspect-ratio: 1 / 1; border-radius: 22px; background-color: #efefef; overflow: hidden"><img src="img/0a4ef881307029deea0fea6385789dd2.jpg" alt="{{t.dogAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><button type="button" class="boop" aria-label="{{t.boop}}" onClick="{{boop}}"></button><div class="hearts" aria-hidden="true"><sc-for list="{{hearts}}" as="h" hint-placeholder-count="0"><span class="heart" style="--dx: {{h.dx}}; --s: {{h.s}}; width: {{h.sz}}; height: {{h.sz}}; animation-delay: {{h.d}}"><svg viewBox="0 0 24 24" width="100%" height="100%" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21Z" fill="{{h.c}}"></path></svg></span></sc-for></div><span class="pen dog-note" aria-hidden="true" style="position: absolute; top: -38px; left: 110px; right: -32px; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; font-weight: 500; color: #2779FF; transform: rotate(-3deg); text-transform: none; text-wrap: balance">{{t.dog}}</span></div>
+<div class="dog" style="grid-column: 3; grid-row: 1 / 3; position: relative"><div style="aspect-ratio: 1 / 1; border-radius: 22px; background-color: #efefef; overflow: hidden"><div style="position: relative; width: 100%; height: 100%"><img src="img/0a4ef881307029deea0fea6385789dd2.jpg" alt="{{t.dogAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover"><sc-if value="{{licking}}" hint-placeholder-val="{{false}}">
+<svg class="tongue-svg" viewBox="0 0 1200 1200" aria-hidden="true">
+<defs>
+<linearGradient id="bimTg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4AFB6"></stop><stop offset=".55" stop-color="#E5848F"></stop><stop offset="1" stop-color="#C9636F"></stop></linearGradient>
+<radialGradient id="bimTh" cx=".35" cy=".3" r=".6"><stop offset="0" stop-color="#ffffff" stop-opacity=".55"></stop><stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop></radialGradient>
+</defs>
+<ellipse class="mouth" cx="741" cy="774" rx="72" ry="14" fill="#2a1d20"></ellipse>
+<g class="tongue">
+<path d="M672 774 C664 716 684 664 716 636 C730 624 752 624 766 636 C798 664 818 716 810 774 Z" fill="url(#bimTg)"></path>
+<path d="M741 648 C739 690 740 730 741 768" fill="none" stroke="#C24A60" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"></path>
+<path d="M672 774 C664 716 684 664 716 636 C730 624 752 624 766 636 C798 664 818 716 810 774 Z" fill="url(#bimTh)"></path>
+<ellipse cx="708" cy="684" rx="8" ry="26" fill="#ffffff" fill-opacity=".45"></ellipse><path d="M676 760 C700 778 782 778 806 760" fill="none" stroke="#7a3a44" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"></path>
+</g>
+</svg>
+</sc-if></div></div><button type="button" class="boop" aria-label="{{t.boop}}" onClick="{{boop}}"></button><span class="pen dog-note" aria-hidden="true" style="position: absolute; top: -38px; left: 110px; right: -32px; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; font-weight: 500; color: #2779FF; transform: rotate(-3deg); text-transform: none; text-wrap: balance">{{t.dog}}</span></div>
 </div>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 8px 22px 10px; font-size: 15px; color: #6b717d">
@@ -234,7 +257,7 @@ p,li{text-wrap:pretty}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { lang: null, menu: false, hearts: [], booped: (function () { try { return window.localStorage.getItem('jb-boop') === '1'; } catch (e) { return false; } })() };
+    this.state = { lang: null, menu: false, licking: false, booped: (function () { try { return window.localStorage.getItem('jb-boop') === '1'; } catch (e) { return false; } })() };
   }
   renderVals() {
     var isM = this.props.mobile ?? false;
@@ -336,13 +359,12 @@ class Component extends DCLogic {
       ruFg: lang === 'ru' ? '#ffffff' : ink,
       enBg: lang === 'en' ? ink : 'transparent',
       enFg: lang === 'en' ? '#ffffff' : ink,
-      hearts: this.state.hearts || [],
+      licking: this.state.licking,
       boop: function () {
-        var cols = ['#2779FF', '#7FAEFF', '#1B68E5'], hs = [], base = Date.now();
-        for (var i = 0; i < 6; i++) { var z = 18 + Math.round(Math.random() * 14); hs.push({ id: base + '-' + i, c: cols[i % 3], dx: Math.round(Math.random() * 140 - 70) + 'px', s: (0.7 + Math.random() * 0.6).toFixed(2), sz: z + 'px', d: (i * 70) + 'ms' }); }
+        if (self.state.licking) return;
         try { window.localStorage.setItem('jb-boop', '1'); } catch (e) {}
-        self.setState({ hearts: (self.state.hearts || []).concat(hs), booped: true });
-        clearTimeout(self._hT); self._hT = setTimeout(function () { self.setState({ hearts: [] }); }, 2200);
+        self.setState({ licking: true, booped: true });
+        clearTimeout(self._lT); self._lT = setTimeout(function () { self.setState({ licking: false }); }, 1200);
       },
       setRu: function () { try { window.localStorage.setItem('jb-lang', 'ru'); } catch (e) {} self.setState({ lang: 'ru' }); },
       setEn: function () { try { window.localStorage.setItem('jb-lang', 'en'); } catch (e) {} self.setState({ lang: 'en' }); }
