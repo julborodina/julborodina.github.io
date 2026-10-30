@@ -38,11 +38,10 @@ a:focus-visible,button:focus-visible{outline:2px solid #2779FF;outline-offset:3p
 p,li,span,a,h1,h2,h3,blockquote{overflow-wrap:break-word}
 h1,h2,h3{text-wrap:balance;-webkit-hyphens:none;hyphens:none}
 p,li{text-wrap:pretty}
-@media (max-width:760px){p,li,blockquote{-webkit-hyphens:auto;hyphens:auto}}
 .burger{display:none}
 .clamp2{text-wrap:pretty}
 @media (max-width:760px){
-.hdr-ctrl{display:none!important}
+.hdr-ctrl{margin-left:auto}.hdr-ctrl>a{display:none!important}
 .burger{display:inline-flex!important}
 .stack{gap:96px!important}
 .sec{gap:24px!important}
@@ -139,7 +138,7 @@ p,li{text-wrap:pretty}
 <section class="hero" aria-labelledby="hero-title" style="padding-top: 48px; display: flex; flex-direction: column; gap: 20px">
 <div class="photo" style="width: 200px; height: 200px; border-radius: 32px; background: #efefef; overflow: hidden; perspective: 600px"><img src="img/d10873ab43d2a4d04b88dde0af9bd5ff.webp" alt="{{t.photoAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover"></div>
 <div style="position: relative; max-width: 1168px; padding-top: 24px">
-<h1 id="hero-title" style="margin: 0; font-size: clamp(38px, 4.6vw, 66px); line-height: 1.08; font-weight: 500; letter-spacing: -0.02em; text-wrap: wrap; position: relative; color: #2C2F36"><span>{{t.h1a}} </span><span style="white-space: nowrap">{{t.h1pre}}&nbsp;<span style="position: relative; display: inline-block"><span class="note note-d" aria-hidden="true" style="position: absolute; left: 50%; bottom: 92%; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center">{{t.note1}}<br>{{t.note2}}</span><svg aria-hidden="true" viewBox="0 0 300 30" preserveAspectRatio="none" style="position: absolute; left: -4px; bottom: -0.12em; width: calc(100% + 8px); height: 0.3em"><path d="M4 18 C 60 8, 120 26, 180 14 S 270 10, 296 16" fill="none" stroke="#2779FF" stroke-width="5" stroke-linecap="round"></path></svg><span style="position: relative">{{t.h1mark}}</span></span></span><span style="color: #8a909c">{{t.h1b}}</span><span class="note note-m" aria-hidden="true" style="position: absolute; left: 233px; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center; bottom: calc(100% - 109px)">{{t.note1}}<br>{{t.note2}}</span></h1>
+<h1 id="hero-title" style="margin: 0; font-size: clamp(38px, 4.6vw, 66px); line-height: 1.08; font-weight: 500; letter-spacing: -0.02em; text-wrap: wrap; position: relative; color: #2C2F36"><span>{{t.h1a}} </span><span style="white-space: nowrap">{{t.h1pre}}&nbsp;<span style="position: relative; display: inline-block"><span class="note note-d" aria-hidden="true" style="position: absolute; left: 50%; bottom: 92%; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center">{{t.note}}</span><svg aria-hidden="true" viewBox="0 0 300 30" preserveAspectRatio="none" style="position: absolute; left: -4px; bottom: -0.12em; width: calc(100% + 8px); height: 0.3em"><path d="M4 18 C 60 8, 120 26, 180 14 S 270 10, 296 16" fill="none" stroke="#2779FF" stroke-width="5" stroke-linecap="round"></path></svg><span style="position: relative">{{t.h1mark}}</span></span></span><span style="color: #8a909c">{{t.h1b}}</span><span class="note note-m" aria-hidden="true" style="position: absolute; left: 233px; transform: translateX(-50%) rotate(-6deg); font-family: Caveat, cursive; font-size: 0.6em; line-height: 1; font-weight: 500; letter-spacing: 0; color: #2779FF; text-transform: none; white-space: nowrap; text-align: center; bottom: calc(100% - 109px)">{{t.note}}</span></h1>
 </div>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px">
 <a class="btn-p" href="https://t.me/jul_borodina" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border-radius: 30px; font-size: 17px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" style="flex: none"><path d="M2.6 11.3 20.3 4.4c.8-.3 1.7.4 1.5 1.3l-3 14.1c-.2.9-1.2 1.3-1.9.8l-4.7-3.4-2.4 2.3c-.4.4-1.1.2-1.2-.4l-.9-4.4-4.6-1.5c-.9-.3-.9-1.6 0-1.9Z" fill="currentColor"></path><path d="M9.4 14.2 16.6 8.3" fill="none" stroke="#2779FF" stroke-width="1.6" stroke-linecap="round"></path></svg>{{t.tg}}</a>
@@ -239,7 +238,7 @@ class Component extends DCLogic {
         photoAlt: 'Юля Бородина', screensAria: 'Лента экранов из кейсов',
         menuLabel: 'Меню', menuOpen: 'Открыть меню', menuClose: 'Закрыть меню',
         mCases: 'кейсы', mApproach: 'подход', mFacts: 'обо мне', mContact: 'контакты',
-        h1a: 'продуктовый дизайнер', h1pre: 'в', h1mark: 'финтехе,', note1: 'лояльность', note2: 'и подписки', h1b: ' 7+ лет делаю сложные финансовые сценарии понятными',
+        h1a: 'продуктовый дизайнер', h1pre: 'в', h1mark: 'финтехе,', note: 'B2B + B2C', h1b: ' 7+ лет делаю сложные финансовые сценарии понятными',
         tg: 'написать', cv: 'скачать cv',
         casesA: 'кейсы,', casesB: 'где решения считаются в метриках', cover: 'обложка кейса', open: 'Открыть кейс',
         c1t: 'Ozon Premium', c1d: 'программа лояльности банка, −20% к оттоку подписчиков',
@@ -248,7 +247,7 @@ class Component extends DCLogic {
         aT: 'Alarm', aD: 'B2B SaaS для управления персоналом, −23% времени на график смен',
         sbT: 'Сибур', sbD: 'онлайн-загрузка документов для новых сотрудников, 8 сценариев', tlT: 'Travel Locus', tlD: 'iOS-приложение с ИИ‑маршрутами, 6 000 пользователей в бете',
         abT: 'Абилимпикс', abD: 'редизайн сайта международного чемпионата, 100% по доступности',
-        ap0: 'вникаю в задачу и', apMark: 'метрики', ap1: ', предлагаю решение,', ap2: 'довожу до запуска и смотрю, как оно работает после',
+        ap0: 'вникаю в задачу и', apMark: 'метрики', ap1: ', предлагаю решение,', ap2: 'довожу до запуска и слежу, как оно работает после',
         factsTitle: 'обо мне', photoSlot: 'фото', dog: 'проследит, чтобы я ответила быстро', dogAlt: 'Мой пёс', hobbies: ['путешествую', 'воспитываю пса', 'пишу картины'], eduLabel: 'образование',
         e1: 'факультет психологии', e1b: 'мгу имени м. в. ломоносова',
         e2: 'школа дизайна', e2b: 'ниу вшэ',
@@ -263,7 +262,7 @@ class Component extends DCLogic {
         photoAlt: 'Jul Borodina', screensAria: 'A strip of screens from the cases',
         menuLabel: 'Menu', menuOpen: 'Open menu', menuClose: 'Close menu',
         mCases: 'cases', mApproach: 'approach', mFacts: 'about me', mContact: 'contact',
-        h1a: 'product designer', h1pre: 'in', h1mark: 'fintech,', note1: 'loyalty', note2: '& subscriptions', h1b: ' 7+ years making complex financial flows clear',
+        h1a: 'product designer', h1pre: 'in', h1mark: 'fintech,', note: 'B2B + B2C', h1b: ' 7+ years making complex financial flows clear',
         tg: 'message me', cv: 'download cv',
         casesA: 'cases', casesB: 'where decisions are measured in metrics', cover: 'case cover', open: 'Open case',
         c1t: 'Ozon Premium', c1d: 'a bank loyalty program, −20% subscriber churn',

@@ -30,7 +30,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #2779FF;outline-offset:3p
 p,li,span,a,h1,h2,h3,blockquote{overflow-wrap:break-word}
 h1,h2,h3{text-wrap:balance;-webkit-hyphens:none;hyphens:none}
 p,li{text-wrap:pretty}
-@media (max-width:760px){p,li,blockquote{-webkit-hyphens:auto;hyphens:auto}}
 .burger{display:none}
 .pen{font-family:Caveat,cursive;color:#2779FF;text-transform:none;letter-spacing:0;font-weight:500;line-height:1}
 .side{position:sticky;top:96px}
@@ -60,7 +59,7 @@ p,li{text-wrap:pretty}
 .qb{margin-left:0!important}
 .voicegrid>div:first-child{max-width:200px!important}
 .facts{grid-template-columns:minmax(0,1fr)!important}
-.hdr-ctrl{display:none!important}
+.hdr-ctrl{margin-left:auto}.hdr-ctrl>a{display:none!important}
 .burger{display:inline-flex!important}
 .card{padding:24px!important}
 .panel{padding:20px!important}
@@ -206,7 +205,7 @@ p,li{text-wrap:pretty}
 <sc-for list="{{t.rsStats}}" as="st" hint-placeholder-count="2"><div style="box-sizing: border-box; padding: 24px; border-radius: 22px; background: #2779FF; color: #ffffff; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="font-size: 56px; line-height: 1; font-weight: 500; letter-spacing: -0.03em">{{st.n}}</span><span style="font-size: 16px; color: rgba(255, 255, 255, 0.86)">{{st.k}}</span></div></sc-for>
 </div>
 <div class="g3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-<sc-for list="{{t.studies}}" as="sd" hint-placeholder-count="6"><div style="box-sizing: border-box; padding: 22px; border-radius: 22px; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; min-width: 0"><span style="font-size: 15px; font-weight: 500; color: {{sd.c}}; text-transform: none">{{sd.k}}</span><span style="font-size: 20px; font-weight: 500; line-height: 1.2; text-transform: none">{{sd.n}}</span><span class="prose" style="font-size: 16px; line-height: 1.5; color: #3f4652">{{sd.v}}</span></div></sc-for>
+<sc-for list="{{t.studies}}" as="sd" hint-placeholder-count="6"><div style="box-sizing: border-box; padding: 22px; border-radius: 22px; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; min-width: 0"><span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 6px; border-radius: 999px; background: {{sd.bg}}; color: {{sd.c}}; font-size: 14px; font-weight: 500; line-height: 1.2; text-transform: none"><span style="flex: none; width: 20px; height: 20px; border-radius: 999px; background: {{sd.c}}; display: inline-flex; align-items: center; justify-content: center"><sc-if value="{{sd.ok}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{sd.no}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></sc-if></span>{{sd.k}}</span><span style="font-size: 20px; font-weight: 500; line-height: 1.2; text-transform: none">{{sd.n}}</span><span class="prose" style="font-size: 16px; line-height: 1.5; color: #3f4652">{{sd.v}}</span></div></sc-for>
 </div>
 <div class="voicebox" style="box-sizing: border-box; margin-top: 12px; padding: 32px; border-radius: 28px; background: #f4f4f4; display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
@@ -342,7 +341,7 @@ var dict = {
           'Номиналы, условия и срок использования терялись в карточке купона',
           'Подборки и графика не помогали выбрать: непонятно, почему купон оказался в подборке'
         ],
-        voicesNote: 'что говорили респонденты', voiceWho: 'участник теста',
+        voicesNote: 'инсайты', voiceWho: 'участник теста',
         voices: [
           { k: 'каталог', alt: 'Каталог купонов по 2 в ряд', items: ['На самом деле очень удобный интерфейс.', 'Мне удобно, когда по 4 пролистываю: я не трачу много времени, чтобы вечно листать.', 'Почему «Популярное» это сыр, молоко и хлеб? Купоны «Спасибо» на еду?'] },
           { k: 'карточка купона', alt: 'Номиналы купона в карусели', items: ['Не могу сравнить первый и седьмой. А если их будет 20, я не буду мотать 20 штук по полтора купона.', 'Вертикальная прокрутка удобнее, особенно с телефона: ты же вертикально телефон держишь.', 'Если ниже карусели какая-то важная информация, я её никогда в жизни не прочитаю.'] },
@@ -419,7 +418,7 @@ var dict = {
         ctxTitle: 'context',
         ctx1: 'In the Coupons section, Spasibo members swap bonuses for partner coupons. Before the redesign shipped, we needed to check whether the new path to buying a coupon was clear: from the catalog to the order success screen.',
         pains: [ 'The number of coupons kept growing, and finding the right one meant long scrolling', 'Denominations, terms and the expiry date got lost on the coupon card', 'Collections and imagery didn’t help people choose: it was unclear why a coupon was in a collection' ],
-        voicesNote: 'what respondents said', voiceWho: 'test participant, Spasibo member',
+        voicesNote: 'insights', voiceWho: 'test participant, Spasibo member',
         voices: [
           { k: 'catalog', alt: 'Coupon catalog, 2 per row', items: ['Actually, it’s a very convenient interface.', 'I like scrolling 4 at a time: I don’t waste time endlessly scrolling.', 'Why is “Popular” cheese, milk and bread? Spasibo coupons for food?'] },
           { k: 'coupon card', alt: 'Coupon denominations in a carousel', items: ['I can’t compare the first and the seventh. And if there are 20, I won’t swipe through 20 of them one and a half at a time.', 'Vertical scrolling is easier, especially on a phone: you hold your phone vertically.', 'If there’s something important below the carousel, I will never ever read it.'] },
@@ -507,7 +506,7 @@ var dict = {
       mk('08', t.s5Title, [[t.s5Shot, 'img/4a8d7ec568b1dc08fb7893eb9e10da2f.jpg']], t.s5B, t.s5A),
       mk('09', t.s6Title, [[t.s6Shot, 'img/59bd3f95345c071f4e3a61eafc4e122d.jpg']], t.s6B, t.s6A)
     ];
-    t.studies.forEach(function (x) { x.c = /^(не |not )/.test(x.k) ? '#D6336C' : '#2779FF'; });
+    t.studies.forEach(function (x) { var no = /^(не|not)[\s\u00a0]/.test(x.k); x.no = no; x.ok = !no; x.c = no ? '#D92D20' : '#2779FF'; x.bg = no ? '#FDECEC' : '#E9F2FF'; });
     var road = [
       { n: '01', label: t.r1, pen: false, top: '21px' },
       { n: '02', label: t.r2, pen: false, top: '81px' },

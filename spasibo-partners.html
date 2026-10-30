@@ -30,7 +30,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #2779FF;outline-offset:3p
 p,li,span,a,h1,h2,h3,blockquote{overflow-wrap:break-word}
 h1,h2,h3{text-wrap:balance;-webkit-hyphens:none;hyphens:none}
 p,li{text-wrap:pretty}
-@media (max-width:760px){p,li,blockquote{-webkit-hyphens:auto;hyphens:auto}}
 .burger{display:none}
 .pen{font-family:Caveat,cursive;color:#2779FF;text-transform:none;letter-spacing:0;font-weight:500;line-height:1}
 .side{position:sticky;top:96px}
@@ -48,7 +47,7 @@ p,li{text-wrap:pretty}
 .stack{gap:88px!important}
 .g2,.g3,.g4,.mapcard,.techrow{grid-template-columns:minmax(0,1fr)!important}
 .facts{grid-template-columns:minmax(0,1fr)!important}
-.hdr-ctrl{display:none!important}
+.hdr-ctrl{margin-left:auto}.hdr-ctrl>a{display:none!important}
 .burger{display:inline-flex!important}
 .card{padding:24px!important}
 .panel{padding:20px!important}
@@ -342,7 +341,7 @@ class Component extends DCLogic {
         facts: [
           { k: 'роль', v: 'Единственный дизайнер редизайна «Партнёров и акций» на всех поверхностях: приложение, сайт, мобильный банк. Пересобрала легаси в компоненты новой платформы' },
           { k: 'команда', v: '15 команд в проекте. В связке со мной: продакты, исследователь, фронтенд' },
-          { k: 'сроки', v: '3 месяца' },
+          { k: 'сроки', v: '1 год' },
           { k: 'статус', v: 'В проде, раскатано на 100%' }
         ],
         statLabel: 'масштаб', statNum: '80+', statUnit: 'млн', statSub: 'участников программы на момент работы',
@@ -382,7 +381,7 @@ class Component extends DCLogic {
         tcTitle: 'дизайн на стыке с разработкой',
         tcText: 'Сайт партнёров был легаси: макеты делались в разное время и не были привязаны к компонентам. Я пересобрала интерфейс в компонентах новой платформы, чтобы фронтенд привязал их к данным, а акции собирались автоматически, а не вручную на каждой поверхности.',
         tcStats: [ { n: '15', k: 'команд в проекте' }, { n: '9', k: 'автоматизированных систем доработаны' }, { n: '21', k: 'интеграция реализована' } ],
-        tcChips: ['масштабируемое решение', 'независимость от вендоров', 'выдержка нагрузки', 'отказ от легаси', 'единый источник данных по партнёрам и акциям'],
+        tcChips: ['масштабируемое решение', 'независимость от вендоров', 'выдержка нагрузки', 'отказ от легаси', 'единый источник данных'],
         tcImg: 'Схема интеграций новой платформы',
         nxTitle: 'дальнейшие шаги',
         nxText: 'Проект продолжается по роадмапу до 2025 года: единое рабочее место контент-менеджера, автоматическая настройка акций, поиск, метрики и персонализация целевых акций в мобильном банке и программе лояльности. Следующая поверхность в редизайне: купоны.',
@@ -430,7 +429,7 @@ class Component extends DCLogic {
         facts: [
           { k: 'role', v: 'The only designer on the “Partners and offers” redesign across every surface: app, website, banking app. Rebuilt the legacy UI in the new platform’s components' },
           { k: 'team', v: '15 teams on the project. Working with me: product managers, a researcher, front-end' },
-          { k: 'timeline', v: '3 months' },
+          { k: 'timeline', v: '1 year' },
           { k: 'status', v: 'Live, rolled out to 100% of users' }
         ],
         statLabel: 'scale', statNum: '80M+', statUnit: '', statSub: 'program members at the time of the project',
@@ -470,7 +469,7 @@ class Component extends DCLogic {
         tcTitle: 'design at the seam with engineering',
         tcText: 'The partner site was legacy: layouts had been made at different times and weren’t tied to components. I rebuilt the interface in the new platform’s components so that front-end engineers could bind them to data, and offers would be assembled automatically instead of by hand on every surface.',
         tcStats: [ { n: '15', k: 'teams on the project' }, { n: '9', k: 'automated systems upgraded' }, { n: '21', k: 'integrations built' } ],
-        tcChips: ['a scalable solution', 'vendor independence', 'handles the load', 'no more legacy', 'one source of truth for partners and offers'],
+        tcChips: ['a scalable solution', 'vendor independence', 'handles the load', 'no more legacy', 'one source of truth'],
         tcImg: 'Integration diagram of the new platform',
         nxTitle: 'next steps',
         nxText: 'The project continues on a roadmap through 2025: a single workspace for content managers, automatic offer setup, search, metrics and personalization of targeted offers. The next surface in the redesign: coupons.',
