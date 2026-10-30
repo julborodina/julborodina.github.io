@@ -100,7 +100,7 @@ p,li{text-wrap:pretty}
 .tongue-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .mouth{opacity:0;animation:mouth .72s ease both}
 @keyframes mouth{0%,100%{opacity:0}10%,85%{opacity:.85}}
-.tongue{transform-box:view-box;transform-origin:741px 739px;animation:lick .72s linear both}
+.tongue{transform-box:view-box;transform-origin:741px 774px;animation:lick .72s linear both}
 @keyframes lick{
 0%{transform:translateY(0) scale(.85,.04) rotate(0deg);opacity:0;animation-timing-function:cubic-bezier(.3,0,.2,1)}
 6%{opacity:1}
@@ -233,12 +233,12 @@ p,li{text-wrap:pretty}
 <linearGradient id="bimTg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4AFB6"></stop><stop offset=".55" stop-color="#E5848F"></stop><stop offset="1" stop-color="#C9636F"></stop></linearGradient>
 <radialGradient id="bimTh" cx=".35" cy=".3" r=".6"><stop offset="0" stop-color="#ffffff" stop-opacity=".55"></stop><stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop></radialGradient>
 </defs>
-<ellipse class="mouth" cx="741" cy="739" rx="56" ry="8" fill="#2a1d20"></ellipse>
+<ellipse class="mouth" cx="741" cy="774" rx="72" ry="14" fill="#2a1d20"></ellipse>
 <g class="tongue">
-<path d="M678 739 C672 692 690 652 718 630 C731 620 751 620 764 630 C792 652 810 692 804 739 Z" fill="url(#bimTg)"></path>
-<path d="M741 640 C739 676 740 708 741 734" fill="none" stroke="#C24A60" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"></path>
-<path d="M678 739 C672 692 690 652 718 630 C731 620 751 620 764 630 C792 652 810 692 804 739 Z" fill="url(#bimTh)"></path>
-<ellipse cx="710" cy="668" rx="7" ry="22" fill="#ffffff" fill-opacity=".45"></ellipse><path d="M682 728 C704 744 778 744 800 728" fill="none" stroke="#7a3a44" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"></path>
+<path d="M672 774 C664 716 684 664 716 636 C730 624 752 624 766 636 C798 664 818 716 810 774 Z" fill="url(#bimTg)"></path>
+<path d="M741 648 C739 690 740 730 741 768" fill="none" stroke="#C24A60" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"></path>
+<path d="M672 774 C664 716 684 664 716 636 C730 624 752 624 766 636 C798 664 818 716 810 774 Z" fill="url(#bimTh)"></path>
+<ellipse cx="708" cy="684" rx="8" ry="26" fill="#ffffff" fill-opacity=".45"></ellipse><path d="M676 760 C700 778 782 778 806 760" fill="none" stroke="#7a3a44" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"></path>
 </g>
 </svg>
 </sc-if><button type="button" class="boop" aria-label="{{t.boop}}" onClick="{{boop}}"></button></div><span class="cdog-note" aria-hidden="true" style="position: relative; margin-top: -26px; padding: 0 20px 20px; font-family: Caveat, cursive; font-weight: 500; color: #2779FF; text-transform: none; line-height: 1.05; font-size: 25px; transform: rotate(-3deg)">{{t.dog}}</span></div>
@@ -260,6 +260,21 @@ class Component extends DCLogic {
     super(props);
     this.state = { lang: null, menu: false, licking: false, copied: false, booped: (function () { try { return window.localStorage.getItem('jb-boop') === '1'; } catch (e) { return false; } })() };
   }
+  componentDidMount() {
+    var self = this;
+    var lick = function () { if (self.state.licking) return; self.setState({ licking: true }); clearTimeout(self._lT); self._lT = setTimeout(function () { self.setState({ licking: false }); }, 760); };
+    var tries = 0;
+    var hook = function () {
+      var el = document.querySelector('.cdog');
+      if (!el) { if (tries++ < 20) self._hk = setTimeout(hook, 250); return; }
+      if (!('IntersectionObserver' in window)) return;
+      var seen = false;
+      self._io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting && !seen) { seen = true; setTimeout(lick, 350); } else if (!en.isIntersecting) { seen = false; } }); }, { threshold: 0.6 });
+      self._io.observe(el);
+    };
+    hook();
+  }
+  componentWillUnmount() { clearTimeout(this._hk); clearTimeout(this._lT); if (this._io) this._io.disconnect(); }
   renderVals() {
     var isM = this.props.mobile ?? false;
     var lang = this.state.lang || (function () { try { var v = window.localStorage.getItem('jb-lang'); return v === 'en' || v === 'ru' ? v : null; } catch (e) { return null; } })() || this.props.startLang || 'ru';
