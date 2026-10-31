@@ -275,10 +275,11 @@ p,li{text-wrap:pretty}
 <div style="min-width: 0; display: flex; flex-direction: column; gap: 24px">
 <div class="g2" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px">
 <div style="position: relative; box-sizing: border-box; padding: 32px; border-radius: 28px; background: #2779FF; color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 280px">
-<span style="font-size: 16px; color: rgba(255, 255, 255, 0.86)">churn rate</span>
-<span style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: clamp(72px, 8vw, 120px); line-height: 0.9; font-weight: 500; letter-spacing: -0.03em">−20%</span><span class="prose" style="font-size: 17px; line-height: 1.45; color: rgba(255, 255, 255, 0.9)">{{t.outStat}}</span></span>
+<span class="pen hide-sm" aria-hidden="true" style="position: absolute; right: 28px; top: -34px; font-size: 28px; transform: rotate(-3deg); white-space: nowrap">{{t.penTwice}}</span><span style="font-size: 16px; color: rgba(255, 255, 255, 0.86)">churn rate</span>
+<span style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: clamp(72px, 8vw, 120px); line-height: 0.9; font-weight: 500; letter-spacing: -0.03em">−20%</span><span class="prose" style="font-size: 17px; line-height: 1.45; color: rgba(255, 255, 255, 0.9)">{{t.outStat}}</span><span style="align-self: flex-start; margin-top: 4px; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); font-size: 15px; font-weight: 500; color: #ffffff; text-transform: none">{{t.outTwice}}</span></span>
 </div>
 <div class="prose" style="box-sizing: border-box; padding: 32px; border-radius: 28px; background: #f9f9f9; display: flex; flex-direction: column; gap: 16px; font-size: 18px; line-height: 1.6; color: #222222">
+<p style="margin: 0">{{t.out0}}</p>
 <p style="margin: 0">{{t.out1}}</p>
 <p style="margin: 0">{{t.out2}}</p>
 </div>
@@ -364,7 +365,7 @@ class Component extends DCLogic {
           { k: 'тестирование', v: 'AB-тест, 9 групп, 1 месяц' },
           { k: 'статус', v: 'Раскатано на 100% аудитории' }
         ],
-        statSub: 'относительно контроля, значимо во всех группах', screensAria: 'Лента экранов кейса',
+        statSub: 'относительно контроля, значимо во всех группах. Подтвердили повторным тестом', screensAria: 'Лента экранов кейса',
         scopeTitle: 'что ещё я делала в Ozon Premium',
         scope: 'Около полутора лет я вела дизайн подписки Ozon Premium и работала на две цели: привлекать новых подписчиков и снижать отток. Флоу отмены лишь одна из этих задач.',
         otherLabel: 'другие задачи:', other: ['[задача по привлечению]', '[задача по удержанию]', '[ещё задача]'],
@@ -403,7 +404,7 @@ class Component extends DCLogic {
         s3Shot: 'Финальный экран: «Передумали? Возобновить»',
         s3A: 'На экране подтверждения отмены появилась строка «Передумали?» с кнопкой мгновенного возобновления подписки: одно нажатие, без похода в настройки.',
         before: 'было', after: 'стало', solution: 'решение',
-        outTitle: 'результаты',
+        outTitle: 'результаты', out0: 'Результат выглядел слишком хорошим, поэтому мы запустили AB-тест повторно. Первый показал −19,8%, второй −20,3%: эффект воспроизвёлся.', outTwice: 'тест 1: −19,8% · тест 2: −20,3%', penTwice: 'не поверили и перепроверили',
         outStat: 'к churn rate в AB-тесте относительно контрольной группы',
         out1: 'Группы: 1 контрольная и 8 тестовых, по 4 на сегмент (триальная или со скидкой и платная подписка). После теста решение раскатили на 100% пользователей, а подбор экранов для каждого клиента передали ML-модели.',
         out2: 'Сильнее всего сработали два экрана: предупреждение о немедленной потере преимуществ при отмене триала и экран с точной суммой, которую клиент будет платить за уведомления по операциям Ozon Карты после отмены подписки.',
@@ -427,7 +428,7 @@ class Component extends DCLogic {
           { k: 'testing', v: 'A/B test, 9 groups, 1 month' },
           { k: 'status', v: 'Rolled out to 100% of users' }
         ],
-        statSub: 'vs. control, statistically significant in every group', screensAria: 'A strip of screens from the case',
+        statSub: 'vs. control, statistically significant in every group. Confirmed by a repeat test', screensAria: 'A strip of screens from the case',
         scopeTitle: 'more of my work on Ozon Premium',
         scope: 'For about a year and a half I led design for the Ozon Premium subscription, working towards two goals: bringing in new subscribers and reducing churn. The cancellation flow is just one of those tasks.',
         otherLabel: 'other work:', other: ['[acquisition task]', '[retention task]', '[another task]'],
@@ -466,7 +467,7 @@ class Component extends DCLogic {
         s3Shot: 'Final screen: “Changed your mind? Renew”',
         s3A: 'The cancellation confirmation screen got a “Changed your mind?” line with a button to renew instantly: one tap, no trip to settings.',
         before: 'before', after: 'after', solution: 'solution',
-        outTitle: 'results',
+        outTitle: 'results', out0: 'The result looked too good to be true, so we ran the A/B test again. The first run showed −19.8%, the second −20.3%: the effect held.', outTwice: 'run 1: −19.8% · run 2: −20.3%', penTwice: 'too good to be true, so we re-ran it',
         outStat: 'churn rate in the A/B test vs. the control group',
         out1: 'Groups: 1 control and 8 test groups, 4 per segment (trial or discounted, and paid subscription). After the test, the solution was rolled out to 100% of users, and an ML model now picks the screens for each customer.',
         out2: 'Two screens worked best: the warning that trial perks are lost immediately on cancelling, and the screen showing the exact amount people will pay for Ozon Card transaction notifications after cancelling.',
