@@ -153,6 +153,7 @@ p,li{text-wrap:pretty}
 </div>
 <a onClick="{{goTg}}" class="btn-p" href="https://t.me/jul_borodina" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 30px; font-size: 17px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" style="flex: none"><path d="M2.6 11.3 20.3 4.4c.8-.3 1.7.4 1.5 1.3l-3 14.1c-.2.9-1.2 1.3-1.9.8l-4.7-3.4-2.4 2.3c-.4.4-1.1.2-1.2-.4l-.9-4.4-4.6-1.5c-.9-.3-.9-1.6 0-1.9Z" fill="currentColor"></path><path d="M9.4 14.2 16.6 8.3" fill="none" stroke="#2779FF" stroke-width="1.6" stroke-linecap="round"></path></svg>{{t.tg}}</a>
 <a onClick="{{goCv}}" class="btn-s" href="#cv-file" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 30px; font-size: 17px; font-weight: 500; text-decoration: none">{{t.cv}}<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M12 4v13M6 11l6 6 6-6M5 20h14"></path></svg></a>
+<a class="cv-alt" href="#cv-file-alt" onClick="{{goCvAlt}}" style="align-self: center; padding: 4px 8px; font-size: 15px; color: #6b717d; text-decoration: underline; text-decoration-color: #c9ced6; text-underline-offset: 3px; text-transform: none">{{t.cvAlt}}</a>
 </div>
 </div>
 </sc-if>
@@ -226,6 +227,7 @@ p,li{text-wrap:pretty}
 <a class="rowl" href="https://t.me/jul_borodina" onClick="{{goTg}}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 4px; text-decoration: none; color: #111111; border-bottom: 1px solid #ececec"><span style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="font-size: 15px; color: #6b717d">{{t.tgLabel}}</span><span style="font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -0.015em; text-transform: none; overflow-wrap: anywhere">@jul_borodina</span></span><span class="rarr" style="flex: none; width: 52px; height: 52px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: #2779FF; color: #ffffff"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M7 17 17 7M8 7h9v9"></path></svg></span></a>
 <button type="button" class="rowl mail-d" onClick="{{copyMail}}" aria-label="{{t.mailAria}}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 4px; text-decoration: none; color: #111111; border-bottom: 1px solid #ececec; width: 100%; border-left: 0; border-right: 0; border-top: 0; background: none; font: inherit; text-align: left; cursor: pointer"><span style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><sc-if value="{{copied}}" hint-placeholder-val="{{false}}"><span style="font-size: 15px; color: #6b717d; color: #2779FF">{{t.copied}}</span></sc-if><sc-if value="{{notCopied}}" hint-placeholder-val="{{true}}"><span style="font-size: 15px; color: #6b717d">{{t.mail}}</span></sc-if><span class="cmail" style="font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -0.015em; text-transform: none; white-space: nowrap">jdborodina@gmail.com</span></span><span class="rarr" style="flex: none; width: 52px; height: 52px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: #f2f2f2"><sc-if value="{{copied}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{notCopied}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><rect x="8" y="8" width="12" height="12" rx="3"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg></sc-if></span></button>
 <a class="rowl" href="#cv-file" onClick="{{goCv}}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 4px; text-decoration: none; color: #111111"><span style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="font-size: 15px; color: #6b717d">{{t.more}}</span><span style="font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -0.015em; text-transform: none; overflow-wrap: anywhere">{{t.cvShort}}</span></span><span class="rarr" style="flex: none; width: 52px; height: 52px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: #f2f2f2"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M12 4v13M6 11l6 6 6-6M5 20h14"></path></svg></span></a>
+<a class="cv-alt" href="#cv-file-alt" onClick="{{goCvAlt}}" style="align-self: flex-start; margin: -18px 0 0 4px; padding: 0 0 14px; font-size: 14px; color: #6b717d; text-decoration: underline; text-decoration-color: #c9ced6; text-underline-offset: 3px; text-transform: none">{{t.cvAlt}}</a>
 </div>
 <div class="dog cdog" style="position: relative; box-sizing: border-box; border-radius: 28px; background: #ffffff; overflow: hidden; display: flex; flex-direction: column"><div style="position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #ffffff"><img src="img/77f2b15b2014ed6f9e08a200d7d9d517.jpg" alt="{{t.dogAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover"><sc-if value="{{licking}}" hint-placeholder-val="{{false}}">
 <svg class="tongue-svg" viewBox="0 0 1200 1200" aria-hidden="true">
@@ -301,7 +303,7 @@ class Component extends DCLogic {
         langLabel2: 'языки', l1: 'русский', l1v: 'родной', l2: 'английский', l3: 'испанский',
         aboutTitle: 'кроме дизайна', aboutText: '[пара фраз о себе вне работы: увлечения, город]',
         quoteAria: 'Цитата', q1: 'я проектирую не только то, как продукт выглядит, но и то, что человек в нём', qMark: 'чувствует', q2: '',
-        cA: 'напишите мне', cB: ', я\u00a0на\u00a0связи', tgPref: 'удобнее всего', mail: 'почта', more: 'больше обо мне', cvShort: 'резюме',
+        cA: 'напишите мне', cB: ', я\u00a0на\u00a0связи', tgPref: 'удобнее всего', mail: 'почта', more: 'больше обо мне', cvShort: 'резюме', cvAlt: 'english version',
         copy: '© юля бородина, 2026', toTop: 'наверх'
       },
       en: {
@@ -325,7 +327,7 @@ class Component extends DCLogic {
         langLabel2: 'languages', l1: 'russian', l1v: 'native', l2: 'english', l3: 'spanish',
         aboutTitle: 'besides design', aboutText: '[a couple of lines about life outside work: hobbies, city]',
         quoteAria: 'Quote', q1: 'i design not only how a product looks, but how it', qMark: 'feels', q2: 'to use',
-        cA: 'drop me a line', cB: ', I’m in touch', tgPref: 'the quickest way', mail: 'email', more: 'more about me', cvShort: 'cv',
+        cA: 'drop me a line', cB: ', I’m in touch', tgPref: 'the quickest way', mail: 'email', more: 'more about me', cvShort: 'cv', cvAlt: 'русская версия',
         copy: '© jul borodina, 2026', toTop: 'back to top'
       }
     };
@@ -380,6 +382,7 @@ class Component extends DCLogic {
       copied: !!this.state.copied, notCopied: !this.state.copied,
       goTg: function () { goal('contact_tg'); },
       goCv: function () { goal('contact_cv'); },
+      goCvAlt: function () { goal('contact_cv_alt'); },
       goMail: function () { goal('contact_mail'); },
       copyMail: function () {
         goal('contact_mail');
