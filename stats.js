@@ -1,6 +1,6 @@
 /* Статистика: GoatCounter, без cookies. Пока код пустой, ничего не отправляется. */
 (function () {
-  var GC = ''; // например 'jdborodina' → https://jdborodina.goatcounter.com
+  var GC = 'jdborodina'; // например 'jdborodina' → https://jdborodina.goatcounter.com
   if (!GC) return;
 
   var s = document.createElement('script');
