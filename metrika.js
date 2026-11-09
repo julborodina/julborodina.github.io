@@ -28,6 +28,44 @@
     }, true);
   }
 
+  /* Промежуточные цели: интерес к кейсам */
+  var caseOf = function (h) {
+    var m = String(h || '').match(/(ozon|alarm|spasibo-partners|spasibo-coupons)\.html/i);
+    return m ? m[1].toLowerCase() : null;
+  };
+  var here = caseOf(location.pathname);
+  var goalP = function (n, c) { try { window.ym(ID, 'reachGoal', n, c ? { 'кейс': c } : undefined); } catch (e) {} };
+
+  /* Клик по кейсу: с главной и из «других кейсов» */
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var c = caseOf(a.getAttribute('href'));
+    if (!c || c === here) return;
+    goalP(here ? 'next_case' : 'home_case_click', c);
+  }, true);
+
+  if (here) {
+    /* Глубина дочитывания: 50% и 90% страницы */
+    var hit = {};
+    var onScroll = function () {
+      var d = document.documentElement;
+      var full = Math.max(d.scrollHeight, document.body ? document.body.scrollHeight : 0);
+      if (full <= window.innerHeight * 1.2) return;
+      var p = (window.scrollY + window.innerHeight) / full;
+      if (p >= 0.5 && !hit[50]) { hit[50] = 1; goalP('case_read_50', here); }
+      if (p >= 0.9 && !hit[90]) { hit[90] = 1; goalP('case_read_90', here); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* Провели на кейсе больше минуты активного времени (вкладка открыта и на виду) */
+    var spent = 0, tick = setInterval(function () {
+      if (document.visibilityState !== 'visible') return;
+      spent += 5;
+      if (spent >= 60) { clearInterval(tick); goalP('case_60s', here); }
+    }, 5000);
+  }
+
   /* Плашка про cookies */
   var KEY = 'jb-cookies-ok';
   try { if (window.localStorage.getItem(KEY)) return; } catch (e) {}
