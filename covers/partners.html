@@ -10,14 +10,11 @@
   /* Главный экран крупно и по центру, два второстепенных меньше, ниже и позади */
   .hero { left: 920px; top: 150px; z-index: 3; animation: fl 9s ease-in-out infinite; }
   .hero img { width: 560px; height: 1213px; }
-  .side { z-index: 1; padding: 14px; margin: -14px 0 0 -14px; border-radius: 60px; box-shadow: 0 0 0 2px rgba(17, 24, 39, .04), 0 20px 50px rgba(17, 24, 39, .07); }
+  .side { z-index: 1; border-radius: 46px; box-shadow: 0 20px 50px rgba(17, 24, 39, .08); }
   .side img { width: 420px; height: 910px; border-radius: 46px; }
   .sl { left: 560px; top: 430px; animation: fl 11s ease-in-out -4s infinite; }
   .sr { left: 1420px; top: 430px; animation: fl 10s ease-in-out -7s infinite; }
   @keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .note { left: 150px; top: 250px; font-size: 96px; z-index: 4; }
-  .arw { left: 0; top: 0; width: 2400px; height: 1600px; stroke-width: 7; z-index: 4; }
-  @media (max-width:480px) { .note { left: 900px; top: 18px; } }
 </style>
 </head>
 <body>
@@ -25,8 +22,6 @@
   <div class="ph side sl"><img src="../img/0d5679995f9eaf34b295cbef1297f47b.jpg" alt=""></div>
   <div class="ph side sr"><img src="../img/3c32d4f62c284b48332d3a121f0471fe.jpg" alt=""></div>
   <div class="ph hero"><img src="../img/51dd56310cf1be0853f88c2bf66ee6c8.jpg" alt=""></div>
-  <div class="note" data-ru="категории на виду" data-en="categories in sight"></div>
-  <svg class="arw" viewBox="0 0 2400 1600"><path class="d" pathLength="1" d="M 720 364 C 820 430, 890 600, 948 790 M 900 772 L 950 796 L 962 742"/><path class="m" pathLength="1" d="M 902 96 C 820 300, 840 640, 948 790 M 900 772 L 950 796 L 962 742"/></svg>
 </div></div>
 <script src="kit.js"></script>
 <script>Cover({ w: 2400, h: 1600 });</script>

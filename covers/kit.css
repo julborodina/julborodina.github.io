@@ -9,7 +9,7 @@ body {
     linear-gradient(90deg, rgba(17, 17, 17, .045) 1px, transparent 1px),
     linear-gradient(180deg, #FBFBFC 0%, #F1F2F4 100%);
   background-size: 48px 48px, 48px 48px, 100% 100%;
-  background-position: center -1px, center -1px, 0 0;
+  background-position: calc(50% + 24px) 24px, calc(50% + 24px) 24px, 0 0;  /* линии сетки не ложатся на края карточки */
 }
 .st { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 
@@ -17,10 +17,9 @@ body {
 .lift { position: absolute; inset: 0; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
 .hov .lift { transform: translateY(var(--lift, -16px)); }
 
-/* Телефон: белая рамка, мягкая тень */
-.ph { position: absolute; padding: 16px; margin: -16px 0 0 -16px; border-radius: 72px; background: #fff;
-  box-shadow: 0 0 0 2px rgba(17, 24, 39, .05), 0 30px 70px rgba(17, 24, 39, .10), 0 8px 18px rgba(17, 24, 39, .05); }
-.ph img { display: block; border-radius: 56px; object-fit: cover; object-position: top center; background: #fff; }
+/* Экран без рамок: скруглённые углы и мягкая тень */
+.ph { position: absolute; border-radius: 56px; box-shadow: 0 30px 70px rgba(17, 24, 39, .10), 0 8px 18px rgba(17, 24, 39, .05); }
+.ph > img, .ph .scr > img:first-child { display: block; border-radius: 56px; object-fit: cover; object-position: top center; background: #fff; }
 
 /* Пометка дизайнера: синий рукописный текст и стрелка, прописываются один раз */
 .note { position: absolute; z-index: 5; font-family: 'Caveat Cover', Caveat, cursive; font-weight: 600; color: #2779FF; white-space: nowrap; line-height: 1;

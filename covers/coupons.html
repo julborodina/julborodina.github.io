@@ -8,24 +8,20 @@
 <style>
   .st { width: 1200px; height: 800px; --lift: -8px; }
   /* Кусочки настоящего интерфейса из кейса, каждый на своей подложке экрана */
-  .pc { position: absolute; padding: 14px; border-radius: 28px; background: #fff;
-    box-shadow: 0 0 0 1px rgba(17, 24, 39, .05), 0 20px 46px rgba(17, 24, 39, .09), 0 4px 10px rgba(17, 24, 39, .04); }
-  .pc img { display: block; height: auto; border-radius: 16px; }
+  .pc { position: absolute; }
+  .pc img { display: block; height: auto; border-radius: 24px; box-shadow: 0 20px 46px rgba(17, 24, 39, .09), 0 4px 10px rgba(17, 24, 39, .04); }
   .cols   { left: 70px;  top: 112px; z-index: 2; animation: fa 10s ease-in-out infinite; }
-  .cols img { width: 343px; }
-  .banner { left: 56px;  top: 262px; z-index: 1; animation: fb 11s ease-in-out -4s infinite; padding: 0; overflow: hidden; }
+  .cols img { width: 371px; border-radius: 24px; }
+  .banner { left: 56px;  top: 262px; z-index: 1; animation: fb 11s ease-in-out -4s infinite; }
   .banner img { width: 362px; border-radius: 28px; }
   .grid   { left: 430px; top: 66px;  z-index: 3; animation: fa 9s ease-in-out -2s infinite; }
-  .grid img { width: 335px; border-radius: 10px; }
+  .grid img { width: 363px; border-radius: 24px; }
   .ticket { left: 830px; top: 104px; z-index: 2; animation: fb 10s ease-in-out -6s infinite; }
-  .ticket img { width: 289px; }
+  .ticket img { width: 300px; border-radius: 0; box-shadow: none; filter: drop-shadow(0 16px 30px rgba(17, 24, 39, .10)); }
   .promo  { left: 796px; top: 362px; z-index: 4; animation: fa 12s ease-in-out -7s infinite; }
-  .promo img { width: 335px; }
+  .promo img { width: 350px; border-radius: 0; box-shadow: none; filter: drop-shadow(0 16px 30px rgba(17, 24, 39, .10)); }
   @keyframes fa { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
   @keyframes fb { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-  .note { left: 740px; top: 30px; font-size: 46px; z-index: 6; }
-  .arw { left: 0; top: 0; width: 1200px; height: 800px; stroke-width: 3.4; z-index: 6; }
-  @media (max-width:480px) { .note { left: 470px; top: 18px; } }
 </style>
 </head>
 <body>
@@ -35,8 +31,6 @@
   <div class="pc grid"><img data-src="cp/grid-{lg}.webp" alt=""></div>
   <div class="pc ticket"><img data-src="cp/ticket-{lg}.webp" alt=""></div>
   <div class="pc promo"><img data-src="cp/promo-{lg}.webp" alt=""></div>
-  <div class="note" data-ru="срок видно до покупки" data-en="expiry shown before buying"></div>
-  <svg class="arw" viewBox="0 0 1200 800"><path class="d" pathLength="1" d="M 776 84 C 772 120, 800 166, 846 184 M 826 186 L 848 186 L 846 164"/><path class="m" pathLength="1" d="M 868 66 C 904 96, 900 146, 874 176 M 868 154 L 872 178 L 894 168"/></svg>
 </div></div>
 <script src="kit.js"></script>
 <script>Cover({ w: 1200, h: 800 });</script>

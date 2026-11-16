@@ -7,23 +7,34 @@
 <link rel="stylesheet" href="kit.css">
 <style>
   .st { width: 2400px; height: 1600px; --lift: -18px; }
-  .ph img { width: 500px; height: 1083px; }
-  .l { left: 392px; top: 420px; animation: fl 9s ease-in-out infinite; }
-  .c { left: 976px; top: 230px; animation: fl 8s ease-in-out -2.5s infinite; z-index: 2; }
-  .r { left: 1552px; top: 420px; animation: fl 10s ease-in-out -5s infinite; }
-  @keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .note { left: 196px; top: 236px; font-size: 96px; }
-  .arw { left: 0; top: 0; width: 2400px; height: 1600px; stroke-width: 7; }
-  @media (max-width:480px) { .note { left: 860px; top: 106px; } }
+  .ph > img { width: 500px; height: 1083px; }
+  .l { left: 392px; top: 420px; }
+  .c { left: 976px; top: 230px; z-index: 2; }
+  .r { left: 1552px; top: 420px; }
+  .c .scr { position: relative; width: 500px; height: 1083px; border-radius: 56px; overflow: hidden; }
+  /* Колокольчик из экрана звонит раз в несколько секунд, от него расходятся звуковые дуги */
+  .bell { position: absolute; left: 220px; top: 313.3px; width: 213.3px; height: 240px; transform-origin: 59% 19%; animation: ring 4.2s ease-in-out infinite; }
+  @keyframes ring {
+    0% { transform: rotate(0); } 4% { transform: rotate(15deg); } 9% { transform: rotate(-12deg); } 14% { transform: rotate(9deg); }
+    19% { transform: rotate(-6deg); } 24% { transform: rotate(3deg); } 29%, 100% { transform: rotate(0); } }
+  .snd { position: absolute; left: 0; top: 0; width: 500px; height: 1083px; overflow: visible; fill: none; stroke: #2C6BFF; stroke-width: 7; stroke-linecap: round; }
+  .snd path { opacity: 0; transform-box: fill-box; animation: snd 4.2s ease-out infinite; }
+  .snd .a2 { animation-delay: .12s; } .snd .b1 { animation-delay: .06s; } .snd .b2 { animation-delay: .18s; }
+  .snd .r1, .snd .r2 { transform-origin: 0% 50%; } .snd .b1, .snd .b2 { transform-origin: 100% 50%; }
+  @keyframes snd { 0% { opacity: 0; transform: scale(.7); } 6% { opacity: .9; } 26% { opacity: 0; transform: scale(1.25); } 100% { opacity: 0; } }
 </style>
 </head>
 <body>
 <div class="st" aria-hidden="true"><div class="lift">
   <div class="ph l"><img src="../img/41d44e65200e2fb6d3088a023b401ae3.jpg" alt=""></div>
-  <div class="ph c"><img src="../img/93a5fc65e936b5dbb0459a9d5eb6e4e0.jpg" alt=""></div>
+  <div class="ph c"><div class="scr">
+    <img src="oz/screen-c.jpg" alt="" style="width:500px;height:1083px">
+    <img class="bell" src="oz/bell.png" alt="">
+    <svg class="snd" viewBox="0 0 500 1083">
+      <path class="r1" d="M 448 386 Q 468 416 450 448"/><path class="r2 a2" d="M 472 368 Q 502 416 476 464"/>
+    </svg>
+  </div></div>
   <div class="ph r"><img src="../img/a13f3a3f3e07829e36e80949f75c028d.jpg" alt=""></div>
-  <div class="note" data-ru="одна выгода на экран" data-en="one benefit per screen"></div>
-  <svg class="arw" viewBox="0 0 2400 1600"><path class="d" pathLength="1" d="M 932 296 C 992 300, 1014 350, 1018 430 M 984 400 L 1018 436 L 1046 394"/><path class="m" pathLength="1" d="M 1590 168 C 1650 210, 1640 300, 1530 372 M 1546 336 L 1528 374 L 1570 382"/></svg>
 </div></div>
 <script src="kit.js"></script>
 <script>Cover({ w: 2400, h: 1600, keep: 1125, keepM: 1000 });</script>
