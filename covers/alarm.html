@@ -21,7 +21,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #2779FF;outline-offset:3p
 p,li,span,a,h1,h2,h3,blockquote{overflow-wrap:break-word}
 h1,h2,h3{text-wrap:balance;-webkit-hyphens:none;hyphens:none}
 p,li{text-wrap:pretty}
-@media (max-width:760px){p,li,blockquote{-webkit-hyphens:auto;hyphens:auto}}
+@media (max-width:480px){p,li,blockquote{-webkit-hyphens:auto;hyphens:auto}}
 .burger{display:none}
 .pen{font-family:Caveat,cursive;color:#2779FF;text-transform:none;letter-spacing:0;font-weight:500;line-height:1}
 .side{position:sticky;top:96px}
@@ -33,7 +33,7 @@ p,li{text-wrap:pretty}
 .split{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
 .side{position:static}
 }
-@media (max-width:760px){
+@media (max-width:480px){
 .shot{width:150px!important;height:325px!important;border-radius:24px!important}
 .marquee{margin-top:32px!important}
 .stack{gap:88px!important}
@@ -62,9 +62,9 @@ p,li{text-wrap:pretty}
 .clamp2{text-wrap:pretty}
 .more{scrollbar-width:none}
 .more::-webkit-scrollbar{display:none}
-@media (max-width:760px){.more{margin:-10px -16px -10px!important;padding:10px 16px 14px!important;scroll-padding-left:16px}.mcard{flex-basis:82%!important;min-height:340px!important}}
+@media (max-width:480px){.more{margin:-10px -16px -10px!important;padding:10px 16px 14px!important;scroll-padding-left:16px}.mcard{flex-basis:82%!important;min-height:340px!important}}
 .hv{display:none}
-@media (max-width:760px){.hero-img{aspect-ratio:4 / 5!important}.hv{display:inline!important}}
+@media (max-width:480px){.hero-img{aspect-ratio:4 / 5!important}.hv{display:inline!important}}
 /* motion: calm micro-animations */
 .case,.ctile,.ctile-p,.btn-p,.btn-s,.btn-teal,.chip{transition:transform .35s cubic-bezier(.22,.61,.36,1),background-color .25s ease,color .25s ease,border-color .25s ease!important}
 .arrow svg{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
@@ -105,7 +105,7 @@ p,li{text-wrap:pretty}
 .alx-wb{--k:.5139;width:740px;height:463px;border-radius:18px;overflow:hidden;position:relative;isolation:isolate;transform:translateZ(0);background:#fff;margin:0 auto;box-shadow:0 0 0 1px rgba(14,31,69,.06),0 24px 48px rgba(14,31,69,.10)}
 .alx-wdev{width:1440px;height:900px;transform:scale(var(--k));transform-origin:0 0;position:absolute;left:0;top:0;font-family:Onest,'Inter',system-ui,sans-serif;color:#0E1F45;overflow:hidden;background:#fff;text-transform:none;letter-spacing:0;text-align:left;-webkit-font-smoothing:antialiased}
 .alx-cur{position:absolute;width:28px;height:28px;z-index:50;pointer-events:none;filter:drop-shadow(0 3px 6px rgba(14,31,69,.25))}
-@media (max-width:760px){.alx-wb{--k:.2083;width:300px;height:188px;border-radius:12px}}
+@media (max-width:480px){.alx-wb{--k:.2083;width:300px;height:188px;border-radius:12px}}
 @media (prefers-reduced-motion:reduce){.alx-ph *,.alx-wb *{animation:none!important}}
 
 /* al1 · SOS: удержание → сигнал отправлен · 14s */
@@ -732,7 +732,7 @@ p,li{text-wrap:pretty}
 .alx-app{display:grid;grid-template-columns:repeat(2,280px);justify-content:center;gap:40px 48px}
 .alx-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px}
 .alx-fig figcaption{max-width:280px;text-align:center;font:500 15px/1.4 Onest,sans-serif;color:#4E5D7E}
-@media (max-width:760px){.alx-root{width:100%;min-width:0;max-width:100%}.alx-app{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 -20px;padding:0 20px 8px;justify-content:flex-start;scrollbar-width:none}.alx-app::-webkit-scrollbar{display:none}.alx-fig{flex:0 0 280px;scroll-snap-align:center}}
+@media (max-width:480px){.alx-root{width:100%;min-width:0;max-width:100%}.alx-app{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 -20px;padding:0 20px 8px;justify-content:flex-start;scrollbar-width:none}.alx-app::-webkit-scrollbar{display:none}.alx-fig{flex:0 0 280px;scroll-snap-align:center}}
 
 .alh{--hs:.55;position:relative;width:100%;aspect-ratio:16 / 9;border-radius:28px;overflow:hidden;background:#EEF4FF;font-family:Onest,'Inter',system-ui,sans-serif;text-transform:none;letter-spacing:0}
 .alh:before{content:"";position:absolute;inset:-6%;background:url(../img/38583eb546d93d1afe76b6ddf64240ca.svg) center/cover no-repeat;opacity:.55}
@@ -747,7 +747,7 @@ p,li{text-wrap:pretty}
 .alh-card b{display:block;font:600 30px/34px Onest,sans-serif;letter-spacing:-.02em;color:#2779FF}
 .alh-card span{font:400 15px/20px Onest,sans-serif;color:#4E5D7E}
 @keyframes alh-fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@media (max-width:760px){
+@media (max-width:480px){
 .alh{aspect-ratio:4 / 5}
 .alh-st{width:360px;height:450px}
 .alh .alh-web{left:-70px;top:110px}
@@ -757,7 +757,7 @@ p,li{text-wrap:pretty}
 .alh-card{display:none}
 }
 @media (prefers-reduced-motion:reduce){.alh *{animation:none!important}}
-@media (min-width:761px){.alh{--hs:0.5249}}@media (min-width:801px){.alh{--hs:0.5527}}@media (min-width:841px){.alh{--hs:0.5805}}@media (min-width:881px){.alh{--hs:0.6084}}@media (min-width:921px){.alh{--hs:0.6362}}@media (min-width:961px){.alh{--hs:0.6640}}@media (min-width:1001px){.alh{--hs:0.6918}}@media (min-width:1041px){.alh{--hs:0.7196}}@media (min-width:1081px){.alh{--hs:0.7474}}@media (min-width:1121px){.alh{--hs:0.7752}}@media (min-width:1161px){.alh{--hs:0.8030}}@media (min-width:1201px){.alh{--hs:0.8308}}@media (min-width:1241px){.alh{--hs:0.8586}}@media (min-width:1281px){.alh{--hs:0.8864}}@media (min-width:1321px){.alh{--hs:0.9142}}@media (min-width:1361px){.alh{--hs:0.9421}}@media (min-width:1401px){.alh{--hs:0.9699}}@media (min-width:1441px){.alh{--hs:0.9966}}@media (min-width:1448px){.alh{--hs:1}}@media (min-width:300px) and (max-width:760px){.alh{--hs:0.6711}}@media (min-width:320px) and (max-width:760px){.alh{--hs:0.7162}}@media (min-width:340px) and (max-width:760px){.alh{--hs:0.7613}}@media (min-width:360px) and (max-width:760px){.alh{--hs:0.8064}}@media (min-width:380px) and (max-width:760px){.alh{--hs:0.8516}}@media (min-width:400px) and (max-width:760px){.alh{--hs:0.8967}}@media (min-width:420px) and (max-width:760px){.alh{--hs:0.9418}}@media (min-width:440px) and (max-width:760px){.alh{--hs:0.9869}}@media (min-width:460px) and (max-width:760px){.alh{--hs:1.0320}}@media (min-width:480px) and (max-width:760px){.alh{--hs:1.0771}}@media (min-width:500px) and (max-width:760px){.alh{--hs:1.1222}}@media (min-width:520px) and (max-width:760px){.alh{--hs:1.1673}}@media (min-width:540px) and (max-width:760px){.alh{--hs:1.2124}}@media (min-width:560px) and (max-width:760px){.alh{--hs:1.2576}}@media (min-width:580px) and (max-width:760px){.alh{--hs:1.3027}}@media (min-width:600px) and (max-width:760px){.alh{--hs:1.3478}}@media (min-width:620px) and (max-width:760px){.alh{--hs:1.3929}}@media (min-width:640px) and (max-width:760px){.alh{--hs:1.4380}}@media (min-width:660px) and (max-width:760px){.alh{--hs:1.4831}}@media (min-width:680px) and (max-width:760px){.alh{--hs:1.5282}}@media (min-width:700px) and (max-width:760px){.alh{--hs:1.5733}}@media (min-width:720px) and (max-width:760px){.alh{--hs:1.6184}}@media (min-width:740px) and (max-width:760px){.alh{--hs:1.6636}}
+@media (min-width:761px){.alh{--hs:0.5249}}@media (min-width:801px){.alh{--hs:0.5527}}@media (min-width:841px){.alh{--hs:0.5805}}@media (min-width:881px){.alh{--hs:0.6084}}@media (min-width:921px){.alh{--hs:0.6362}}@media (min-width:961px){.alh{--hs:0.6640}}@media (min-width:1001px){.alh{--hs:0.6918}}@media (min-width:1041px){.alh{--hs:0.7196}}@media (min-width:1081px){.alh{--hs:0.7474}}@media (min-width:1121px){.alh{--hs:0.7752}}@media (min-width:1161px){.alh{--hs:0.8030}}@media (min-width:1201px){.alh{--hs:0.8308}}@media (min-width:1241px){.alh{--hs:0.8586}}@media (min-width:1281px){.alh{--hs:0.8864}}@media (min-width:1321px){.alh{--hs:0.9142}}@media (min-width:1361px){.alh{--hs:0.9421}}@media (min-width:1401px){.alh{--hs:0.9699}}@media (min-width:1441px){.alh{--hs:0.9966}}@media (min-width:1448px){.alh{--hs:1}}@media (min-width:300px) and (max-width:480px){.alh{--hs:0.6711}}@media (min-width:320px) and (max-width:480px){.alh{--hs:0.7162}}@media (min-width:340px) and (max-width:480px){.alh{--hs:0.7613}}@media (min-width:360px) and (max-width:480px){.alh{--hs:0.8064}}@media (min-width:380px) and (max-width:480px){.alh{--hs:0.8516}}@media (min-width:400px) and (max-width:480px){.alh{--hs:0.8967}}@media (min-width:420px) and (max-width:480px){.alh{--hs:0.9418}}@media (min-width:440px) and (max-width:480px){.alh{--hs:0.9869}}@media (min-width:460px) and (max-width:480px){.alh{--hs:1.0320}}@media (min-width:480px) and (max-width:480px){.alh{--hs:1.0771}}@media (min-width:500px) and (max-width:480px){.alh{--hs:1.1222}}@media (min-width:520px) and (max-width:480px){.alh{--hs:1.1673}}@media (min-width:540px) and (max-width:480px){.alh{--hs:1.2124}}@media (min-width:560px) and (max-width:480px){.alh{--hs:1.2576}}@media (min-width:580px) and (max-width:480px){.alh{--hs:1.3027}}@media (min-width:600px) and (max-width:480px){.alh{--hs:1.3478}}@media (min-width:620px) and (max-width:480px){.alh{--hs:1.3929}}@media (min-width:640px) and (max-width:480px){.alh{--hs:1.4380}}@media (min-width:660px) and (max-width:480px){.alh{--hs:1.4831}}@media (min-width:680px) and (max-width:480px){.alh{--hs:1.5282}}@media (min-width:700px) and (max-width:480px){.alh{--hs:1.5733}}@media (min-width:720px) and (max-width:480px){.alh{--hs:1.6184}}@media (min-width:740px) and (max-width:480px){.alh{--hs:1.6636}}
 </style>
 <style>
   /* Обложка карточки: та же иллюстрация, что первой стоит в кейсе */
@@ -840,10 +840,10 @@ p,li{text-wrap:pretty}
 
   /* Масштаб сцены под карточку: всё важное над белой плашкой с названием */
   function fit() {
-    var W = window.innerWidth, H = window.innerHeight, m = W <= 760;
+    var W = window.innerWidth, H = window.innerHeight, m = W <= 480;
     var panel = m ? 150 : 106;
     /* полезная часть сцены: от верха телефона до низа экранов, по ширине от дашборда до телефона */
-    var sw = m ? 360 : 1090, y0 = m ? 22 : 46, sh = m ? 400 : 565;
+    var sw = m ? 360 : 1110, y0 = m ? 22 : 40, sh = m ? 400 : 566;
     var s = Math.min(W / sw, (H - panel - 8) / sh);
     el.style.setProperty('--hs', s.toFixed(4));
     el.style.setProperty('--t', Math.round(8 - y0 * s) + 'px');

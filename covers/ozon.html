@@ -5,86 +5,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ozon Premium · обложка</title>
 <style>
-  html, body { margin: 0; height: 100%; overflow: hidden; }
-  body {
-    background:
-      radial-gradient(60% 70% at 86% 10%, rgba(0, 91, 255, .14), transparent 70%),
-      radial-gradient(50% 60% at 10% 88%, rgba(240, 70, 160, .07), transparent 70%),
-      linear-gradient(180deg, #F5F8FD 0%, #EBF0F8 100%);
-  }
-  /* Телефон: внутри оригинальные экраны из кейса, без изменений */
-  .ph {
-    position: absolute; left: 50%; top: var(--top, 24px);
-    width: var(--pw, 200px); aspect-ratio: 750 / 1624;
-    transform: translateX(-50%);
-    border-radius: calc(var(--pw, 200px) * .11); background: #fff; overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(14, 31, 69, .06), 0 24px 56px rgba(14, 31, 69, .14);
-  }
-  .track { position: absolute; left: 0; top: 0; height: 100%; width: 300%; display: flex; transition: transform .7s cubic-bezier(.65, 0, .25, 1); }
-  .track img { width: 33.3334%; height: 100%; object-fit: cover; object-position: top center; display: block; flex: none; }
-  .tap {
-    position: absolute; left: 81%; top: 52.6%; width: 18%; aspect-ratio: 1; border-radius: 50%;
-    transform: translate(-50%, -50%) scale(.3); background: rgba(255, 255, 255, .6); opacity: 0; pointer-events: none;
-  }
-  .tapping .tap { animation: tap .6s ease-out both; }
-  @keyframes tap { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); } }
-  .stage { position: absolute; inset: 0; transition: opacity .5s ease; }
-  .out .stage { opacity: 0; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1F4BE0; }
+  /* Сцена в координатах исходной обложки 2400×1600 */
+  .st { position: absolute; left: 0; top: 0; width: 2400px; height: 1600px; transform-origin: 0 0; }
+  .zoom { position: absolute; inset: 0; transform-origin: 50% 40%; animation: kb 14s ease-in-out infinite alternate; }
+  @keyframes kb { from { transform: scale(1); } to { transform: scale(1.035); } }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* Экран центрального телефона: те же оригинальные экраны из кейса */
+  .scr { position: absolute; left: 976px; top: 306px; width: 500px; height: 1083px; border-radius: 40px; overflow: hidden; background: #fff; }
+  .track { position: absolute; left: 0; top: 0; width: 2000px; height: 100%; display: flex; transition: transform .75s cubic-bezier(.65, 0, .25, 1); }
+  .track img { width: 500px; height: 1083px; display: block; flex: none; }
+  .tap { position: absolute; left: 50%; top: 79.7%; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
+    background: rgba(255, 255, 255, .55); opacity: 0; transform: scale(.3); pointer-events: none; }
+  .tapping .tap { animation: tap .65s ease-out both; }
+  @keyframes tap { 0% { opacity: 0; transform: scale(.3); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(2.6); } }
+
+  .paused, .paused * { animation-play-state: paused !important; }
 </style>
 </head>
 <body>
-<div class="stage">
-  <div class="ph" aria-hidden="true">
+<div class="st" aria-hidden="true"><div class="zoom">
+  <img class="bg" src="../img/0433fd9120a309b9f9f41742590faf34.jpg" alt="">
+  <div class="scr">
     <div class="track">
-      <img src="../img/17255c4f6c1772c9a6b1ee543ceb835c.jpg" alt="">
+      <img src="../img/93a5fc65e936b5dbb0459a9d5eb6e4e0.jpg" alt="">
+      <img src="../img/357f5be151561d4cf002e7341bba46dd.jpg" alt="">
       <img src="../img/45dd7636fbb3180aaaf9c10c193ad082.jpg" alt="">
-      <img src="../img/9364f9f181d49ea1e29b994e535f4cc1.png" alt="">
+      <img src="../img/93a5fc65e936b5dbb0459a9d5eb6e4e0.jpg" alt="">
     </div>
     <span class="tap"></span>
   </div>
-</div>
+</div></div>
 <script>
 (function () {
-  var root = document.documentElement;
+  var st = document.querySelector('.st'), track = document.querySelector('.track'), cls = document.body.classList;
+
+  /* Обложка заполняет карточку; кнопка центрального экрана остаётся над белой плашкой с названием */
   function fit() {
-    var W = window.innerWidth, H = window.innerHeight;
-    var top = Math.round(Math.min(24, H * .06));
-    var panel = W < 500 ? 150 : 106;            /* белая плашка с названием кейса внизу карточки */
-    var show = W < 500 ? .66 : .70;             /* какая доля экрана должна быть видна над плашкой */
-    var byH = (H - panel - top) / show * (750 / 1624);
-    var pw = Math.round(Math.max(140, Math.min(W * .42, byH)));
-    root.style.setProperty('--pw', pw + 'px');
-    root.style.setProperty('--top', top + 'px');
+    var W = window.innerWidth, H = window.innerHeight, m = W <= 480;
+    var s = Math.max(W / 2400, H / 1600);
+    var panel = m ? 150 : 106;
+    var need = 1210 * s + 6;                      /* низ кнопки «Leave it free» в координатах сцены */
+    var up = Math.max(0, need - (H - panel));
+    st.style.transform = 'translate(' + ((W - 2400 * s) / 2) + 'px,' + (-up) + 'px) scale(' + s + ')';
   }
   fit(); window.addEventListener('resize', fit);
 
-  var track = document.querySelector('.track'), cls = document.body.classList;
-  function show(i, instant) {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cls.add('paused'); return; }
+
+  /* Нажали на кнопку → следующий экран: два экрана-лидера AB-теста и экран кешбэка, по кругу */
+  var SLOT = 2800, N = 3, LOOP = SLOT * N, start = 0, raf = 0, running = false, pos = 0, resetAt = 0;
+  function go(i, instant) {
     if (instant) track.style.transition = 'none';
-    track.style.transform = 'translateX(' + (-100 / 3 * i) + '%)';
+    track.style.transform = 'translateX(' + (-500 * i) + 'px)';
     if (instant) { track.offsetWidth; track.style.transition = ''; }
+    pos = i;
   }
-
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { show(0, true); return; }
-
-  /* 9 секунд: доставка → кешбэк → «Вы отменили подписку · Передумали? Возобновить» → нажатие */
-  var LOOP = 9000, start = 0, raf = 0, running = false, last = -1;
   function frame(now) {
     if (!start) start = now;
-    var t = (now - start) % LOOP;
-    var i = t < 2600 ? 0 : t < 5200 ? 1 : 2;
-    if (i !== last) { show(i, i === 0); last = i; }
-    cls.toggle('tapping', t > 6600 && t < 7300);
-    cls.toggle('out', t >= 8400);
+    var e = now - start, t = e % LOOP, i = Math.floor(t / SLOT), u = t - i * SLOT;
+    var want = (i === 0 && e >= LOOP) ? 3 : i;           /* после третьего экрана едем на копию первого */
+    if (want !== pos && !(pos === 0 && want === 3)) { go(want); if (want === 3) resetAt = now + 800; }
+    if (resetAt && now >= resetAt) { go(0, true); resetAt = 0; }
+    cls.toggle('tapping', u > 1700 && u < 2350);
     raf = requestAnimationFrame(frame);
   }
-  function play() { if (running) return; running = true; start = 0; last = -1; raf = requestAnimationFrame(frame); }
-  function stop() { running = false; cancelAnimationFrame(raf); }
+  function play() { if (running) return; running = true; start = 0; resetAt = 0; go(0, true); cls.remove('paused'); raf = requestAnimationFrame(frame); }
+  function stop() { running = false; cancelAnimationFrame(raf); cls.add('paused'); }
   var seen = true;
   function sync() { (seen && !document.hidden) ? play() : stop(); }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (e) { seen = e[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(document.body);
-  } else sync();
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { seen = e[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(document.body);
+  else sync();
   document.addEventListener('visibilitychange', sync);
 })();
 </script>
