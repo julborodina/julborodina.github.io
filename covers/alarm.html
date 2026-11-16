@@ -766,6 +766,11 @@ p,li{text-wrap:pretty}
   .alh-st { top: var(--t, 10px) !important; transform: translateX(-50%) scale(var(--hs)) !important; transform-origin: 50% 0 !important; }
   .alh[hidden] { display: none !important; }
   .paused, .paused * { animation-play-state: paused !important; }
+  /* Дашборд и телефон чуть ближе друг к другу */
+  .alh .alh-web { left: 74px !important; }
+  .alh .alh-phw { left: 820px !important; }
+  .alh-card { left: 482px !important; }
+  @media (max-width:480px) { .alh .alh-web { left: -70px !important; } .alh .alh-phw { left: 150px !important; } }
 </style>
 </head>
 <body>
