@@ -11,6 +11,7 @@
 
 <script src="./support.js"></script>
 <script src="./stats.js"></script>
+<script src="./covers/hover.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -1183,6 +1184,7 @@ p,li{text-wrap:pretty}
 <sc-for list="{{more}}" as="m" hint-placeholder-count="3">
 <a class="case mcard" href="{{m.href}}" aria-label="{{m.aria}}" style="position: relative; flex: 0 0 calc((100% - 24px) / 2.3); min-height: 380px; scroll-snap-align: start; border-radius: 28px; background-color: #ececec; background-image: repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.04) 0 2px, transparent 2px 14px); text-decoration: none; color: #111111; overflow: hidden">
 <sc-if value="{{m.img}}" hint-placeholder-val="{{false}}"><picture><source media="(max-width: 760px)" srcset="{{m.imgM}}"><img src="{{m.img}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block"></picture></sc-if>
+<sc-if value="{{m.live}}" hint-placeholder-val="{{false}}"><iframe src="{{m.live}}" title="" aria-hidden="true" tabindex="-1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: #F4F5F7"></iframe></sc-if>
 <span style="position: absolute; left: 8px; right: 8px; bottom: 8px; box-sizing: border-box; min-height: 98px; padding: 16px 16px 16px 20px; border-radius: 22px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; gap: 16px">
 <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
 <span class="clamp1" style="font-size: 20px; line-height: 1.2; font-weight: 500; text-transform: none">{{m.title}}</span>
@@ -1356,14 +1358,14 @@ class Component extends DCLogic {
     var isM = this.props.mobile ?? false;
     var homeHref = './';
     var casesAll = [
-      { key: 'ozon', file: 'ozon', img: 'img/0433fd9120a309b9f9f41742590faf34.jpg', imgM: 'img/ad9ea344f20582d0a3250f93f4e87174.jpg', ru: ['Ozon Premium', 'программа лояльности банка, −20% к оттоку подписчиков'], en: ['Ozon Premium', 'a bank loyalty program, −20% subscriber churn'] },
-      { key: 'sber', file: 'spasibo-partners', img: 'img/e0017eb83d0e056dbc7922666143fd58.jpg', imgM: 'img/cdadfd290f7ae372ce756eb53f372e42.jpg', ru: ['Спасибо · партнёры', 'программа лояльности банка №1 на 80M+ участников'], en: ['Spasibo · partners', 'loyalty program of Russia’s largest bank, 80M+ members'] },
-      { key: 'coupons', file: 'spasibo-coupons', img: 'img/74b6dd63d2c1733cdc2145dab033432d.jpg', imgM: 'img/6fc5f2702ac1c645d0e7f2310fcf0309.jpg', ru: ['Спасибо · купоны', 'купоны программы лояльности банка №1, +18% к конверсии в покупку'], en: ['Spasibo · coupons', 'coupons in the loyalty program of Russia’s largest bank, +18% conversion to purchase'] }
+      { key: 'ozon', live: 'covers/ozon.html', file: 'ozon', img: 'img/0433fd9120a309b9f9f41742590faf34.jpg', imgM: 'img/ad9ea344f20582d0a3250f93f4e87174.jpg', ru: ['Ozon Premium', 'программа лояльности банка, −20% к оттоку подписчиков'], en: ['Ozon Premium', 'a bank loyalty program, −20% subscriber churn'] },
+      { key: 'sber', live: 'covers/partners.html', file: 'spasibo-partners', img: 'img/e0017eb83d0e056dbc7922666143fd58.jpg', imgM: 'img/cdadfd290f7ae372ce756eb53f372e42.jpg', ru: ['Спасибо · партнёры', 'программа лояльности банка №1 на 80M+ участников'], en: ['Spasibo · partners', 'loyalty program of Russia’s largest bank, 80M+ members'] },
+      { key: 'coupons', live: 'covers/coupons.html', file: 'spasibo-coupons', img: 'img/74b6dd63d2c1733cdc2145dab033432d.jpg', imgM: 'img/6fc5f2702ac1c645d0e7f2310fcf0309.jpg', ru: ['Спасибо · купоны', 'купоны программы лояльности банка №1, +18% к конверсии в покупку'], en: ['Spasibo · coupons', 'coupons in the loyalty program of Russia’s largest bank, +18% conversion to purchase'] }
     ];
     var openWord = lang === 'ru' ? 'Открыть кейс' : 'Open case';
     var more = casesAll.map(function (c) {
       var v = lang === 'ru' ? c.ru : c.en;
-      return { title: v[0], desc: nb(v[1]), img: c.img || '', imgM: c.imgM || c.img || '', aria: openWord + ' ' + v[0], href: c.file + '.html' };
+      return { title: v[0], desc: nb(v[1]), img: c.img || '', imgM: c.imgM || c.img || '', aria: openWord + ' ' + v[0], href: c.file + '.html', live: c.live ? c.live + '?lang=' + lang : '' };
     });
     var t2 = lang === 'ru'
       ? { moreA: 'другие кейсы', moreB: 'листайте вбок', cover: 'обложка кейса' }

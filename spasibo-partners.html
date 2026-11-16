@@ -11,6 +11,7 @@
 
 <script src="./support.js"></script>
 <script src="./stats.js"></script>
+<script src="./covers/hover.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -300,6 +301,7 @@ p,li{text-wrap:pretty}
 <a class="case mcard" href="{{m.href}}" aria-label="{{m.aria}}" style="position: relative; flex: 0 0 calc((100% - 24px) / 2.3); min-height: 380px; scroll-snap-align: start; border-radius: 28px; background-color: #ececec; background-image: repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.04) 0 2px, transparent 2px 14px); text-decoration: none; color: #111111; overflow: hidden">
 <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -80%); padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(17, 17, 17, 0.18); font-size: 14px; color: #5e5e5e; white-space: nowrap">{{t2.cover}} · 1200×800</span>
 <sc-if value="{{m.img}}" hint-placeholder-val="{{false}}"><picture><source media="(max-width: 760px)" srcset="{{m.imgM}}"><img src="{{m.img}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block"></picture></sc-if>
+<sc-if value="{{m.live}}" hint-placeholder-val="{{false}}"><iframe src="{{m.live}}" title="" aria-hidden="true" tabindex="-1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: #F4F5F7"></iframe></sc-if>
 <sc-if value="{{m.wip}}" hint-placeholder-val="{{false}}"><span style="position: absolute; top: 14px; left: 14px; padding: 6px 12px; border-radius: 999px; background: #ffffff; border: 1.5px dashed #2779FF; color: #1B68E5; font-size: 13px; font-weight: 500; line-height: 1.3; text-transform: none">in progress</span></sc-if>
 <span style="position: absolute; left: 8px; right: 8px; bottom: 8px; box-sizing: border-box; min-height: 98px; padding: 16px 16px 16px 20px; border-radius: 22px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; gap: 16px">
 <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
@@ -546,10 +548,10 @@ class Component extends DCLogic {
     var isM = this.props.mobile ?? false;
     var homeHref = './';
     var casesAll = [
-      { key: 'ozon', file: 'ozon', img: 'img/0433fd9120a309b9f9f41742590faf34.jpg', imgM: 'img/ad9ea344f20582d0a3250f93f4e87174.jpg', ru: ['Ozon Premium', 'программа лояльности банка, −20% к оттоку подписчиков'], en: ['Ozon Premium', 'a bank loyalty program, −20% subscriber churn'] },
-      { key: 'sber', file: 'spasibo-partners', img: 'img/e0017eb83d0e056dbc7922666143fd58.jpg', imgM: 'img/cdadfd290f7ae372ce756eb53f372e42.jpg', ru: ['Спасибо · партнёры', 'программа лояльности банка №1 на 80M+ участников'], en: ['Spasibo · partners', 'loyalty program of Russia’s largest bank, 80M+ members'] },
-      { key: 'coupons', file: 'spasibo-coupons', img: 'img/74b6dd63d2c1733cdc2145dab033432d.jpg', imgM: 'img/6fc5f2702ac1c645d0e7f2310fcf0309.jpg', ru: ['Спасибо · купоны', 'купоны программы лояльности банка №1, +18% к конверсии в покупку'], en: ['Spasibo · coupons', 'coupons in the loyalty program of Russia’s largest bank, +18% conversion to purchase'] },
-      { key: 'alarm', file: 'alarm', img: lang === 'en' ? 'img/4c7e70fe593beff4bee5968928ad1752.jpg' : 'img/alarm-cover-light.jpg', imgM: lang === 'en' ? 'img/56c9a404959bc3ac9eb0b32b6be16c06.jpg' : 'img/alarm-cover-light-m.jpg', ru: ['Alarm', 'B2B SaaS для управления персоналом, −23% времени на график смен'], en: ['Alarm', 'B2B SaaS for workforce management, −23% time on shift scheduling'] },
+      { key: 'ozon', live: 'covers/ozon.html', file: 'ozon', img: 'img/0433fd9120a309b9f9f41742590faf34.jpg', imgM: 'img/ad9ea344f20582d0a3250f93f4e87174.jpg', ru: ['Ozon Premium', 'программа лояльности банка, −20% к оттоку подписчиков'], en: ['Ozon Premium', 'a bank loyalty program, −20% subscriber churn'] },
+      { key: 'sber', live: 'covers/partners.html', file: 'spasibo-partners', img: 'img/e0017eb83d0e056dbc7922666143fd58.jpg', imgM: 'img/cdadfd290f7ae372ce756eb53f372e42.jpg', ru: ['Спасибо · партнёры', 'программа лояльности банка №1 на 80M+ участников'], en: ['Spasibo · partners', 'loyalty program of Russia’s largest bank, 80M+ members'] },
+      { key: 'coupons', live: 'covers/coupons.html', file: 'spasibo-coupons', img: 'img/74b6dd63d2c1733cdc2145dab033432d.jpg', imgM: 'img/6fc5f2702ac1c645d0e7f2310fcf0309.jpg', ru: ['Спасибо · купоны', 'купоны программы лояльности банка №1, +18% к конверсии в покупку'], en: ['Spasibo · coupons', 'coupons in the loyalty program of Russia’s largest bank, +18% conversion to purchase'] },
+      { key: 'alarm', live: 'covers/alarm.html', file: 'alarm', img: lang === 'en' ? 'img/4c7e70fe593beff4bee5968928ad1752.jpg' : 'img/alarm-cover-light.jpg', imgM: lang === 'en' ? 'img/56c9a404959bc3ac9eb0b32b6be16c06.jpg' : 'img/alarm-cover-light-m.jpg', ru: ['Alarm', 'B2B SaaS для управления персоналом, −23% времени на график смен'], en: ['Alarm', 'B2B SaaS for workforce management, −23% time on shift scheduling'] },
       { key: 'abil', file: 'CaseAbilympics', ru: ['Абилимпикс', 'редизайн сайта международного чемпионата, 100% по доступности'], en: ['Abilympics', 'international championship website redesign, 100% accessible'] },
       { key: 'sibur', file: 'CaseSibur', wip: true, ru: ['Сибур', 'онлайн-загрузка документов для новых сотрудников, 8 сценариев'], en: ['Sibur', 'online document upload for new hires, 8 flows'] },
       { key: 'locus', file: 'CaseLocus', wip: true, ru: ['Travel Locus', 'iOS-приложение с ИИ‑маршрутами, 6 000 пользователей в бете'], en: ['Travel Locus', 'an iOS app with AI routes, 6,000 beta users'] }
@@ -557,7 +559,7 @@ class Component extends DCLogic {
     var openWord = lang === 'ru' ? 'Открыть кейс' : 'Open case';
     var more = casesAll.filter(function (c) { return c.key !== 'sber' && ['abil', 'sibur', 'locus'].indexOf(c.key) < 0; }).map(function (c) {
       var v = lang === 'ru' ? c.ru : c.en;
-      return { title: v[0], desc: nb(v[1]), img: c.img || '', imgM: c.imgM || c.img || '', wip: !!c.wip, aria: openWord + ' ' + v[0], href: c.file + '.html' };
+      return { title: v[0], desc: nb(v[1]), img: c.img || '', imgM: c.imgM || c.img || '', wip: !!c.wip, aria: openWord + ' ' + v[0], href: c.file + '.html', live: c.live ? c.live + '?lang=' + lang : '' };
     });
     var t2 = lang === 'ru'
       ? { moreA: 'другие кейсы', moreB: 'листайте вбок', cover: 'обложка кейса' }
