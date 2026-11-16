@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ozon Premium · обложка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(60% 70% at 86% 10%, rgba(0, 91, 255, .14), transparent 70%),
+      radial-gradient(50% 60% at 10% 88%, rgba(240, 70, 160, .07), transparent 70%),
+      linear-gradient(180deg, #F5F8FD 0%, #EBF0F8 100%);
+    font-family: Onest, Inter, system-ui, sans-serif;
+  }
+
+  .ph {
+    position: absolute; left: 50%; top: var(--top, 30px);
+    width: calc(412px * var(--k)); height: calc(892px * var(--k));
+    transform: translateX(-50%);
+    border-radius: calc(46px * var(--k)); background: #fff; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(14, 31, 69, .06), 0 24px 56px rgba(14, 31, 69, .14);
+  }
+  .dev {
+    position: absolute; left: 0; top: 0; width: 412px; height: 892px;
+    transform: scale(var(--k)); transform-origin: 0 0;
+    color: #001A34; -webkit-font-smoothing: antialiased; overflow: hidden;
+  }
+  .dev * { box-sizing: border-box; }
+  .sb { position: absolute; left: 0; right: 0; top: 0; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px 0 26px; font: 500 14px Onest, sans-serif; z-index: 5; background: #fff; }
+
+  /* Лента экранов: одна выгода на экран */
+  .track { position: absolute; left: 0; top: 36px; width: 1236px; height: 856px; display: flex; transition: transform .7s cubic-bezier(.65, 0, .25, 1); }
+  .scr { position: relative; width: 412px; height: 100%; flex: none; text-align: center; }
+  .x { position: absolute; right: 18px; top: 10px; width: 30px; height: 30px; border-radius: 50%; background: #EEF1F6; display: flex; align-items: center; justify-content: center; }
+  .ill { display: block; width: 156px; height: 156px; margin: 14px auto 0;
+    -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); }
+  .scr h3 { margin: 10px 26px 0; font: 700 21px/26px Onest, sans-serif; letter-spacing: -.01em; }
+  .scr p { margin: 8px 32px 0; font: 400 15px/20px Onest, sans-serif; color: #707F8D; }
+  .tag { display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px; background: #EEF4FF; color: #005BFF; font: 500 12px/16px Onest, sans-serif; }
+  .btns { position: absolute; left: 20px; right: 20px; top: 300px; display: flex; flex-direction: column; gap: 8px; }
+  .b { position: relative; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font: 500 16px Onest, sans-serif; overflow: hidden; }
+  .b1 { background: #005BFF; color: #fff; }
+  .b2 { background: #EEF4FF; color: #005BFF; }
+  .b::after { content: ""; position: absolute; left: var(--tx, 50%); top: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: rgba(0, 91, 255, .22); opacity: 0; transform: scale(.4); }
+  .b.tap::after { animation: tap .55s ease-out both; }
+  .b1.tap::after { background: rgba(255, 255, 255, .45); }
+  @keyframes tap { 0% { opacity: 0; transform: scale(.4); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(6); } }
+  .b.tap { transform: scale(.98); transition: transform .15s ease; }
+
+  /* Финал: отменили, но можно вернуться одним нажатием */
+  .fin .ill { width: 156px; height: 156px; margin-top: 40px; }
+  .again { position: absolute; left: 20px; right: 20px; top: 300px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 12px 12px 18px; border-radius: 18px; background: #F2F4F8; text-align: left; font: 500 16px Onest, sans-serif; }
+  .again .b { height: 40px; padding: 0 16px; border-radius: 12px; font-size: 15px; transition: background .3s ease, color .3s ease; }
+  .done .again .b1 { background: #10C44C; }
+  .toast { position: absolute; left: 14px; right: 14px; top: 44px; z-index: 6; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px; background: #0B0B0F; color: #fff; text-align: left; font: 500 15px/20px Onest, sans-serif;
+    opacity: 0; transform: translateY(-16px); transition: opacity .35s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
+  .toast i { width: 34px; height: 34px; border-radius: 10px; background: #2A1B24; display: flex; align-items: center; justify-content: center; flex: none; }
+  .done .toast { opacity: 1; transform: none; }
+
+  .stage { position: absolute; inset: 0; transition: opacity .5s ease; }
+  .out .stage { opacity: 0; }
+</style>
+</head>
+<body>
+<div class="ph" aria-hidden="true"><div class="dev"><div class="stage">
+  <div class="sb"><span>8:00</span><svg width="64" height="16" viewBox="0 0 64 16"><path d="M2 12h3v3H2zM7 9h3v6H7zM12 6h3v9h-3zM17 3h3v12h-3z" fill="#001A34"/><path d="M28 6.5a9 9 0 0 1 12 0M30.5 9.3a5 5 0 0 1 7 0M33 12.2a1.5 1.5 0 0 1 2 0" fill="none" stroke="#001A34" stroke-width="1.8" stroke-linecap="round"/><rect x="45" y="3.5" width="15" height="9" rx="2.5" fill="none" stroke="#001A34" stroke-width="1.4"/><rect x="47" y="5.5" width="9" height="5" rx="1" fill="#001A34"/></svg></div>
+  <div class="toast"><i><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="#FF3D8B"/></svg></i><span data-t="toast"></span></div>
+  <div class="track">
+    <div class="scr">
+      <span class="x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8B97A6" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      <img class="ill" src="oz/delivery.jpg" alt="">
+      <h3 data-t="h1"></h3><span class="tag" data-t="tag1"></span>
+      <div class="btns"><div class="b b1" data-t="stay"></div><div class="b b2 k1" data-t="cancel"></div></div>
+    </div>
+    <div class="scr">
+      <span class="x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8B97A6" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      <img class="ill" src="oz/cashback.jpg" alt="">
+      <h3 data-t="h2"></h3><p data-t="p2"></p>
+      <div class="btns"><div class="b b1" data-t="stay"></div><div class="b b2 k2" data-t="cancel"></div></div>
+    </div>
+    <div class="scr fin">
+      <img class="ill" src="oz/cancel.jpg" alt="">
+      <h3 data-t="h3"></h3><p data-t="p3"></p>
+      <div class="again"><span data-t="mind"></span><div class="b b1 k3" style="--tx:50%" data-t="resume"></div></div>
+    </div>
+  </div>
+</div></div></div>
+
+<script>
+(function () {
+  var en = /[?&]lang=en/.test(location.search);
+  var T = en
+    ? { h1: 'With Ozon Premium, couriers deliver anywhere with no extra fees', tag1: 'Ozon marketplace only', h2: '5 cashback categories with Ozon Premium', p2: 'instead of 4', stay: 'Keep subscription', cancel: 'Cancel anyway', h3: 'You’ve canceled your subscription', p3: 'No further payments will be charged', mind: 'Changed your mind?', resume: 'Resume', resumed: 'Active', toast: 'Subscription is back on' }
+    : { h1: 'С Ozon Premium курьеры привозят товары куда угодно без доплат', tag1: 'Только маркетплейс Ozon', h2: '5 категорий кешбэка с Ozon Premium', p2: 'вместо 4', stay: 'Оставить подписку', cancel: 'Всё равно отменить', h3: 'Вы отменили подписку', p3: 'Больше никаких списаний', mind: 'Передумали?', resume: 'Возобновить', resumed: 'Активна', toast: 'Подписка снова с вами' };
+  if (en) document.documentElement.lang = 'en';
+  [].forEach.call(document.querySelectorAll('[data-t]'), function (el) { el.textContent = T[el.getAttribute('data-t')]; });
+
+  var root = document.documentElement;
+  function fit() {
+    var pw = Math.max(196, Math.min(250, window.innerWidth * 0.42));
+    root.style.setProperty('--k', pw / 412);
+    root.style.setProperty('--top', Math.round(Math.min(30, window.innerHeight * 0.075)) + 'px');
+  }
+  fit(); window.addEventListener('resize', fit);
+
+  var track = document.querySelector('.track'), resume = document.querySelector('.k3');
+  var k1 = document.querySelector('.k1'), k2 = document.querySelector('.k2');
+  var cls = document.body.classList;
+  function show(i) { track.style.transform = 'translateX(' + (-412 * i) + 'px)'; }
+  function state(t) {
+    k1.classList.toggle('tap', t > 1700 && t < 2300);
+    k2.classList.toggle('tap', t > 4200 && t < 4800);
+    resume.classList.toggle('tap', t > 6600 && t < 7200);
+    show(t < 2300 ? 0 : t < 4800 ? 1 : 2);
+    var done = t >= 7000;
+    cls.toggle('done', done);
+    resume.textContent = done ? T.resumed : T.resume;
+    cls.toggle('out', t >= 9600);
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    track.style.transition = 'none'; show(0); return;
+  }
+
+  /* Сценарий на 10 секунд: выгода → ещё выгода → отмена → «Передумали?» → вернули одним нажатием */
+  var LOOP = 10200, start = 0, raf = 0, running = false;
+  function frame(now) {
+    if (!start) start = now;
+    var t = (now - start) % LOOP;
+    if (t < 120) { track.style.transition = 'none'; } else if (!track.style.transition || track.style.transition === 'none') { track.style.transition = ''; }
+    state(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (running) return; running = true; start = 0; raf = requestAnimationFrame(frame); }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+  var seen = true;
+  function sync() { (seen && !document.hidden) ? play() : stop(); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { seen = e[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(document.body);
+  } else sync();
+  document.addEventListener('visibilitychange', sync);
+})();
+</script>
+</body>
+</html>
