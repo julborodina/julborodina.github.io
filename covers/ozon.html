@@ -4,68 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ozon Premium · обложка</title>
+<link rel="stylesheet" href="kit.css">
 <style>
-  html, body { margin: 0; height: 100%; overflow: hidden; }
-  /* Светлый фон с мягким градиентом: фокус на интерфейсе */
-  body {
-    background:
-      radial-gradient(38% 46% at 82% 14%, rgba(0, 91, 255, .16), transparent 70%),
-      radial-gradient(34% 40% at 12% 22%, rgba(240, 80, 170, .10), transparent 70%),
-      radial-gradient(46% 50% at 50% 100%, rgba(120, 140, 255, .12), transparent 70%),
-      linear-gradient(160deg, #F4F5F8 0%, #ECEEF3 55%, #E7EAF1 100%);
-  }
-  /* Сцена в координатах исходной обложки 2400×1600: телефоны и объекты стоят на своих местах */
-  .st { position: absolute; left: 0; top: 0; width: 2400px; height: 1600px; transform-origin: 0 0; }
-  .glow { position: absolute; left: 820px; top: 160px; width: 820px; height: 820px; border-radius: 50%;
-    background: radial-gradient(closest-side, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0)); }
-  .ring { position: absolute; left: 760px; top: 220px; width: 940px; height: 940px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .9); }
-
-  .ph { position: absolute; width: 500px; height: 1083px; padding: 18px; margin: -18px 0 0 -18px; border-radius: 74px;
-    background: rgba(255, 255, 255, .72); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .9), 0 0 0 2px rgba(20, 40, 90, .06), 0 40px 90px rgba(20, 40, 90, .16);
-    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-sizing: content-box; }
-  .ph img { display: block; width: 500px; height: 1083px; border-radius: 56px; }
-  .l { left: 392px; top: 502px; animation: fl 9s ease-in-out infinite; }
-  .c { left: 976px; top: 306px; animation: fl 8s ease-in-out -2.5s infinite; }
-  .r { left: 1552px; top: 502px; animation: fl 10s ease-in-out -5s infinite; }
-  @keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
-
-  /* 3D-объекты из исходной обложки: плавают медленно и чуть-чуть */
-  .pr { position: absolute; will-change: transform; }
-  .star { left: 140px; top: 250px; width: 300px; animation: pa 11s ease-in-out infinite; }
-  .star2 { left: 236px; top: 860px; width: 130px; animation: pb 9s ease-in-out -3s infinite; }
-  .hp { left: 1770px; top: 100px; width: 480px; animation: pc 12s ease-in-out -4s infinite; }
-  @keyframes pa { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(6px, -22px) rotate(6deg); } }
-  @keyframes pb { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(-6px, -16px) rotate(-10deg); } }
-  @keyframes pc { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(-8px, -18px) rotate(-3deg); } }
-
-  .paused, .paused * { animation-play-state: paused !important; }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  .st { width: 2400px; height: 1600px; --lift: -18px; }
+  .ph img { width: 500px; height: 1083px; }
+  .l { left: 392px; top: 420px; animation: fl 9s ease-in-out infinite; }
+  .c { left: 976px; top: 230px; animation: fl 8s ease-in-out -2.5s infinite; z-index: 2; }
+  .r { left: 1552px; top: 420px; animation: fl 10s ease-in-out -5s infinite; }
+  @keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .note { left: 196px; top: 236px; font-size: 96px; }
+  .arw { left: 0; top: 0; width: 2400px; height: 1600px; stroke-width: 7; }
+  @media (max-width:480px) { .note { left: 860px; top: 106px; } }
 </style>
 </head>
 <body>
-<div class="st" aria-hidden="true">
-  <span class="glow"></span><span class="ring"></span>
+<div class="st" aria-hidden="true"><div class="lift">
   <div class="ph l"><img src="../img/41d44e65200e2fb6d3088a023b401ae3.jpg" alt=""></div>
   <div class="ph c"><img src="../img/93a5fc65e936b5dbb0459a9d5eb6e4e0.jpg" alt=""></div>
   <div class="ph r"><img src="../img/a13f3a3f3e07829e36e80949f75c028d.jpg" alt=""></div>
-  <img class="pr star" src="oz/star.png" alt="">
-  <img class="pr star2" src="oz/star.png" alt="">
-  <img class="pr hp" src="oz/headphones.png" alt="">
-</div>
-<script>
-(function () {
-  var st = document.querySelector('.st');
-  function fit() {
-    var W = window.innerWidth, H = window.innerHeight;
-    var s = Math.max(W / 2400, H / 1600) ;
-    st.style.transform = 'translate(' + ((W - 2400 * s) / 2) + 'px,' + (W <= 480 ? -40 * s : 0) + 'px) scale(' + s + ')';
-  }
-  fit(); window.addEventListener('resize', fit);
-  var seen = true;
-  function sync() { st.classList.toggle('paused', !(seen && !document.hidden)); }
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { seen = e[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(document.body);
-  document.addEventListener('visibilitychange', sync);
-})();
-</script>
+  <div class="note" data-ru="одна выгода на экран" data-en="one benefit per screen"></div>
+  <svg class="arw" viewBox="0 0 2400 1600"><path class="d" pathLength="1" d="M 932 296 C 992 300, 1014 350, 1018 430 M 984 400 L 1018 436 L 1046 394"/><path class="m" pathLength="1" d="M 1590 168 C 1650 210, 1640 300, 1530 372 M 1546 336 L 1528 374 L 1570 382"/></svg>
+</div></div>
+<script src="kit.js"></script>
+<script>Cover({ w: 2400, h: 1600, keep: 1125, keepM: 1000 });</script>
 </body>
 </html>
