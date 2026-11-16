@@ -34,6 +34,7 @@
     var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
     if (!a) return;
     var h = a.getAttribute('href') || '';
+    if (/linkedin\.com/i.test(h)) { send('contact_linkedin'); return; }
     var c = caseOf(h);
     if (c && c !== here) { send((here ? 'next-case-' : 'open-case-') + c); return; }
     if (!here) return; /* контакты на главной отправляет сама страница */
