@@ -1182,7 +1182,7 @@ p,li{text-wrap:pretty}
 <h2 id="more-title" style="margin: 0; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.1; font-weight: 500; letter-spacing: -0.02em">{{t2.moreA}}</h2>
 <div class="more" style="display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 8px 14px; margin: -10px -8px -10px; scroll-padding-left: 8px">
 <sc-for list="{{more}}" as="m" hint-placeholder-count="3">
-<a class="case mcard" href="{{m.href}}" aria-label="{{m.aria}}" style="position: relative; flex: 0 0 calc((100% - 24px) / 2.3); min-height: 380px; scroll-snap-align: start; border-radius: 28px; background-color: #ececec; background-image: repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.04) 0 2px, transparent 2px 14px); text-decoration: none; color: #111111; overflow: hidden">
+<a class="case mcard" href="{{m.href}}" aria-label="{{m.aria}}" style="position: relative; flex: 0 0 calc((100% - 24px) / 2.3); min-height: 380px; scroll-snap-align: start; border-radius: 28px; background-color: #FAFAFB; text-decoration: none; color: #111111; overflow: hidden">
 <sc-if value="{{m.img}}" hint-placeholder-val="{{false}}"><picture><source media="(max-width: 760px)" srcset="{{m.imgM}}"><img src="{{m.img}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block"></picture></sc-if>
 <sc-if value="{{m.live}}" hint-placeholder-val="{{false}}"><iframe src="{{m.live}}" title="" aria-hidden="true" tabindex="-1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: #F4F5F7"></iframe></sc-if>
 <span style="position: absolute; left: 8px; right: 8px; bottom: 8px; box-sizing: border-box; min-height: 98px; padding: 16px 16px 16px 20px; border-radius: 22px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; gap: 16px">
@@ -1365,7 +1365,7 @@ class Component extends DCLogic {
     var openWord = lang === 'ru' ? 'Открыть кейс' : 'Open case';
     var more = casesAll.map(function (c) {
       var v = lang === 'ru' ? c.ru : c.en;
-      return { title: v[0], desc: nb(v[1]), img: c.img || '', imgM: c.imgM || c.img || '', aria: openWord + ' ' + v[0], href: c.file + '.html', live: c.live ? c.live + '?lang=' + lang : '' };
+      return { title: v[0], desc: nb(v[1]), img: c.live ? '' : (c.img || ''), imgM: c.live ? '' : (c.imgM || c.img || ''), aria: openWord + ' ' + v[0], href: c.file + '.html', live: c.live ? c.live + '?lang=' + lang : '' };
     });
     var t2 = lang === 'ru'
       ? { moreA: 'другие кейсы', moreB: 'листайте вбок', cover: 'обложка кейса' }
